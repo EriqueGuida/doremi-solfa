@@ -1,7 +1,18 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { formatCurrency } from '../data/products';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
+import {
+  X,
+  Trash2,
+  Plus,
+  Minus,
+  ShoppingBag,
+  ArrowRight,
+  MapPin,
+  Truck,
+  Loader2,
+  Check,
+} from 'lucide-react';
 
 export default function CartDrawer() {
   const {
@@ -12,9 +23,29 @@ export default function CartDrawer() {
     updateQuantity,
     clearCart,
     subtotal,
+    shippingCost,
+    totalOrder,
+    selectedDelivery,
+    setSelectedDelivery,
+    DELIVERY_OPTIONS,
+    shippingAddress,
+    setShippingAddress,
+    isCepLoading,
+    cepError,
+    formatCep,
+    fetchAddressByCep,
   } = useCart();
 
   if (!isCartOpen) return null;
+
+  const handleCepSubmit = (e) => {
+    e.preventDefault();
+    if (shippingAddress.cep) {
+      fetchAddressByCep(shippingAddress.cep);
+    }
+  };
+
+  const currentOption = DELIVERY_OPTIONS[selectedDelivery] || DELIVERY_OPTIONS.traditional;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">
@@ -52,7 +83,7 @@ export default function CartDrawer() {
             </button>
           </div>
 
-          {/* Lista de Itens (Substitui o Textarea cumulativo da AD2) */}
+          {/* Lista de Itens */}
           <div className="flex-1 overflow-y-auto p-6 space-y-4">
             {cartItems.length === 0 ? (
               <div className="text-center py-16 px-4">
@@ -75,7 +106,7 @@ export default function CartDrawer() {
                   <img
                     src={product.imagem}
                     alt={product.nome}
-                    className="w-16 h-16 object-contain bg-white rounded-lg p-1 border border-brand-border flex-shrink-0"
+                    className="w-16 h-16 object-cover bg-white rounded-lg border border-brand-border flex-shrink-0"
                   />
 
                   <div className="flex-1 min-w-0">
@@ -119,27 +150,117 @@ export default function CartDrawer() {
             )}
           </div>
 
-          {/* Rodapé com Cálculo Acumulado em Tempo Real */}
+          {/* Rodapé com Simulação de Frete e Valores em Tempo Real */}
           {cartItems.length > 0 && (
             <div className="p-6 border-t border-brand-border bg-brand-surface space-y-4">
-              <div className="space-y-2 text-sm">
+              
+              {/* Simulador de Frete ViaCEP no Carrinho */}
+              <div className="bg-brand-bg border border-brand-border rounded-xl p-3 space-y-2.5">
+                <div className="flex items-center justify-between text-xs font-semibold text-brand-dark">
+                  <span className="flex items-center gap-1.5">
+                    <Truck className="w-3.5 h-3.5 text-brand-primary" />
+                    <span>Simular Frete & Montagem:</span>
+                  </span>
+                  {shippingAddress.localidade && (
+                    <span className="text-[11px] text-brand-primary font-bold flex items-center gap-1">
+                      <MapPin className="w-3 h-3" />
+                      <span>{shippingAddress.localidade}/{shippingAddress.uf}</span>
+                    </span>
+                  )}
+                </div>
+
+                <form onSubmit={handleCepSubmit} className="flex gap-2">
+                  <input
+                    type="text"
+                    maxLength={9}
+                    value={shippingAddress.cep || ''}
+                    onChange={(e) => {
+                      const val = formatCep(e.target.value);
+                      setShippingAddress((prev) => ({ ...prev, cep: val }));
+                      if (val.replace(/\D/g, '').length === 8) {
+                        fetchAddressByCep(val);
+                      }
+                    }}
+                    placeholder="00000-000"
+                    className="flex-1 px-3 py-1.5 rounded-lg border border-brand-border bg-white text-xs font-mono focus:outline-none focus:ring-1 focus:ring-brand-primary"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isCepLoading}
+                    className="bg-brand-surface hover:bg-brand-muted border border-brand-border px-3 py-1.5 rounded-lg text-xs font-semibold text-brand-dark transition-colors flex items-center gap-1"
+                  >
+                    {isCepLoading ? (
+                      <Loader2 className="w-3 h-3 animate-spin text-brand-primary" />
+                    ) : (
+                      <span>OK</span>
+                    )}
+                  </button>
+                </form>
+
+                {cepError && (
+                  <span className="text-[11px] text-brand-highlight block font-medium">
+                    {cepError}
+                  </span>
+                )}
+
+                {/* Opções Rápidas de Frete */}
+                <div className="grid grid-cols-2 gap-2 pt-1 text-[11px]">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedDelivery('traditional')}
+                    className={`p-2 rounded-lg border text-left transition-all ${
+                      selectedDelivery === 'traditional'
+                        ? 'border-brand-primary bg-white shadow-xs font-bold text-brand-dark'
+                        : 'border-brand-border bg-brand-surface text-brand-textMuted'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>Tradicional</span>
+                      <span className="text-brand-primary">Grátis</span>
+                    </div>
+                    <span className="text-[10px] text-brand-textMuted block font-normal mt-0.5">5-8 dias úteis</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setSelectedDelivery('vip')}
+                    className={`p-2 rounded-lg border text-left transition-all ${
+                      selectedDelivery === 'vip'
+                        ? 'border-brand-primary bg-white shadow-xs font-bold text-brand-dark'
+                        : 'border-brand-border bg-brand-surface text-brand-textMuted'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span>VIP Agendada</span>
+                      <span className="text-brand-highlight">R$ 120</span>
+                    </div>
+                    <span className="text-[10px] text-brand-textMuted block font-normal mt-0.5">Agendamento</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Linhas de Valores */}
+              <div className="space-y-1.5 text-xs sm:text-sm">
                 <div className="flex justify-between text-brand-textMuted">
                   <span>Subtotal da Encomenda</span>
                   <span>{formatCurrency(subtotal)}</span>
                 </div>
                 <div className="flex justify-between text-brand-textMuted">
-                  <span>Frete Especial (RJ)</span>
-                  <span className="text-brand-primary font-semibold">Grátis</span>
+                  <span>Frete com Montagem ({currentOption.name.split(' ')[1]})</span>
+                  <span className={currentOption.price === 0 ? 'text-brand-primary font-semibold' : 'text-brand-dark font-semibold'}>
+                    {currentOption.price === 0 ? 'Grátis' : formatCurrency(currentOption.price)}
+                  </span>
                 </div>
                 <div className="flex justify-between font-bold text-base text-brand-dark pt-2 border-t border-brand-border">
                   <span>Total Estimado</span>
                   <span className="text-xl font-bold text-brand-highlight">
-                    {formatCurrency(subtotal)}
+                    {formatCurrency(totalOrder)}
                   </span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 pt-2">
+              {/* Botões de Ação */}
+              <div className="grid grid-cols-2 gap-3 pt-1">
                 <button
                   onClick={clearCart}
                   className="w-full bg-brand-muted hover:bg-brand-border text-brand-dark text-xs font-semibold py-3 rounded-xl transition-colors"
@@ -149,7 +270,7 @@ export default function CartDrawer() {
                 <a
                   href="#encomendas"
                   onClick={() => setIsCartOpen(false)}
-                  className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-semibold py-3 rounded-xl flex items-center justify-center gap-1.5 transition-colors text-center"
+                  className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white text-xs font-semibold py-3 rounded-xl flex items-center justify-center gap-1.5 transition-colors text-center shadow-sm"
                 >
                   <span>Ir p/ Pagamento</span>
                   <ArrowRight className="w-3.5 h-3.5" />
