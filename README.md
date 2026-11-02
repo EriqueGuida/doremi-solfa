@@ -50,7 +50,7 @@ Este repositório documenta a evolução completa de uma aplicação web, demons
   - Modal de **Cadastro de Clientes** (`RegisterModal`) com validação de senhas em tempo real e sem `alert()` invasivos.
   - Sistema de notificações visuais não-intrusivas (`Toast`).
 
-- [ ] **Milestone 3: Expansão para E-commerce Profissional (v2.0)**
+- [x] **Milestone 3: Expansão para E-commerce Profissional (v2.0)**
   - Integração com a API do **ViaCEP** para preenchimento de endereço e cálculo de frete.
   - Persistência dos itens do carrinho no `localStorage`.
   - Sistema de busca em tempo real com debounce e filtros de categoria.
