@@ -1,10 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { formatCurrency } from '../data/products';
-import { X, ShoppingBag, Ruler, Check, ShieldCheck, Truck } from 'lucide-react';
+import { X, ShoppingBag, Ruler, Check, ShieldCheck, Truck, Sparkles } from 'lucide-react';
 
 export default function ProductModal({ product, onClose }) {
   const { addToCart } = useCart();
+  const [activeImage, setActiveImage] = useState(product?.imagem);
+
+  // Sincroniza imagem ativa quando o produto mudar
+  useEffect(() => {
+    if (product) {
+      setActiveImage(product.imagem);
+    }
+  }, [product]);
 
   // Fecha com tecla ESC
   useEffect(() => {
@@ -18,19 +26,20 @@ export default function ProductModal({ product, onClose }) {
   if (!product) return null;
 
   const isDoremi = product.categoria === 'doremi';
+  const galeria = product.galeria || [product.imagem];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fade-in">
       
       {/* Container do Modal */}
       <div
-        className="relative bg-brand-surface w-full max-w-2xl rounded-3xl border border-brand-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative bg-brand-surface w-full max-w-3xl rounded-3xl border border-brand-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Botão Fechar */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-10 bg-brand-surface/80 hover:bg-brand-muted text-brand-dark p-2 rounded-full border border-brand-border transition-colors"
+          className="absolute top-4 right-4 z-10 bg-brand-surface/90 hover:bg-brand-muted text-brand-dark p-2 rounded-full border border-brand-border transition-colors shadow-sm"
           aria-label="Fechar janela do produto"
         >
           <X className="w-5 h-5" />
@@ -38,39 +47,71 @@ export default function ProductModal({ product, onClose }) {
 
         <div className="overflow-y-auto p-6 sm:p-8 space-y-6">
           
-          {/* Header & Imagem */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+          {/* Header & Galeria Interativa */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
             
-            <div className="relative bg-brand-muted rounded-2xl p-6 flex items-center justify-center min-h-[220px]">
-              <span
-                className={`absolute top-3 left-3 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${
-                  isDoremi ? 'bg-brand-primary text-white' : 'bg-brand-highlight text-white'
-                }`}
-              >
-                {isDoremi ? 'Seção DOReMI' : 'Seção SOLFÁ'}
-              </span>
-              <img
-                src={product.imagem}
-                alt={product.nome}
-                className="max-h-48 max-w-full object-contain"
-              />
+            {/* Coluna da Imagem e Miniaturas */}
+            <div className="md:col-span-7 space-y-3">
+              <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-muted border border-brand-border shadow-xs">
+                <span
+                  className={`absolute top-3 left-3 z-10 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md ${
+                    isDoremi ? 'bg-brand-primary text-white' : 'bg-brand-highlight text-white'
+                  }`}
+                >
+                  {isDoremi ? 'Seção DOReMI' : 'Seção SOLFÁ'}
+                </span>
+                
+                <img
+                  src={activeImage || product.imagem}
+                  alt={product.nome}
+                  className="w-full h-full object-cover object-center transition-all duration-300"
+                />
+              </div>
+
+              {/* Miniaturas Clicáveis da Galeria */}
+              {galeria.length > 1 && (
+                <div className="flex gap-2.5">
+                  {galeria.map((imgSrc, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImage(imgSrc)}
+                      className={`relative w-20 h-16 rounded-xl overflow-hidden border-2 transition-all ${
+                        activeImage === imgSrc
+                          ? 'border-brand-highlight scale-102 shadow-sm'
+                          : 'border-brand-border opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <img
+                        src={imgSrc}
+                        alt={`Vista ${idx + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div>
-              <span className="text-xs font-semibold text-brand-highlight uppercase tracking-wider">
-                {product.tipo} • {product.estilo || `${product.lugares} Lugares`}
-              </span>
-              
-              <h2 className="text-2xl sm:text-3xl font-serif text-brand-dark mt-1 mb-3">
-                {product.nome}
-              </h2>
-
-              <div className="text-2xl sm:text-3xl font-bold text-brand-highlight mb-1">
-                {formatCurrency(product.preco)}
+            {/* Coluna de Preço e Ação */}
+            <div className="md:col-span-5 space-y-4">
+              <div>
+                <span className="text-xs font-semibold text-brand-highlight uppercase tracking-wider">
+                  {product.tipo} • {product.estilo || `${product.lugares} Lugares`}
+                </span>
+                
+                <h2 className="text-2xl sm:text-3xl font-serif text-brand-dark mt-1">
+                  {product.nome}
+                </h2>
               </div>
-              
-              <div className="text-xs text-brand-textMuted mb-4">
-                em até 6x de {formatCurrency(product.preco / 6)} sem juros no cartão
+
+              <div>
+                <div className="text-3xl font-bold text-brand-highlight">
+                  {formatCurrency(product.preco)}
+                </div>
+                
+                <div className="text-xs text-brand-textMuted mt-0.5">
+                  em até 6x de {formatCurrency(product.preco / 6)} sem juros no cartão
+                </div>
               </div>
 
               <button
@@ -78,32 +119,44 @@ export default function ProductModal({ product, onClose }) {
                   addToCart(product);
                   onClose();
                 }}
-                className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white py-3 px-5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-sm transition-all duration-200"
+                className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white py-3.5 px-5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-sm transition-all duration-200"
               >
                 <ShoppingBag className="w-4 h-4" />
                 Adicionar à Encomenda
               </button>
+
+              <div className="pt-2 border-t border-brand-border text-xs text-brand-textMuted space-y-1">
+                <div className="flex items-center gap-1.5 text-brand-primary font-medium">
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Produto disponível para pronta entrega</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <Truck className="w-3.5 h-3.5 text-brand-textMuted" />
+                  <span>Entrega com montagem cortesia no RJ</span>
+                </div>
+              </div>
             </div>
+
           </div>
 
           {/* Descrição e Especificações Detalhadas */}
           <div className="pt-4 border-t border-brand-border space-y-4">
             <div>
               <h4 className="text-xs font-bold uppercase tracking-wider text-brand-dark mb-2">
-                Descrição do Móvel
+                Descrição da Peça
               </h4>
               <p className="text-sm text-brand-textMuted leading-relaxed">
                 {product.descricao}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-brand-muted p-4 rounded-xl text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 bg-brand-muted/60 p-4 rounded-xl text-xs">
               <div className="flex items-center gap-2">
                 <Ruler className="w-4 h-4 text-brand-primary" />
                 <span><strong>Dimensões:</strong> {product.dimensoes}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Check className="w-4 h-4 text-brand-primary" />
+                <Sparkles className="w-4 h-4 text-brand-highlight" />
                 <span>
                   <strong>{product.tecido ? 'Revestimento:' : 'Estrutura:'}</strong>{' '}
                   {product.tecido || product.material}
@@ -111,11 +164,11 @@ export default function ProductModal({ product, onClose }) {
               </div>
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-brand-primary" />
-                <span><strong>Garantia:</strong> 1 ano contra defeitos</span>
+                <span><strong>Garantia:</strong> 5 anos contra defeitos estruturais</span>
               </div>
               <div className="flex items-center gap-2">
                 <Truck className="w-4 h-4 text-brand-primary" />
-                <span><strong>Entrega:</strong> Montagem especializada inclusa</span>
+                <span><strong>Montagem:</strong> Realizada por equipe própria</span>
               </div>
             </div>
           </div>
