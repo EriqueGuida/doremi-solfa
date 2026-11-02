@@ -1,7 +1,9 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export default function Footer() {
+  const { setIsCartOpen } = useCart();
   return (
     <footer className="bg-brand-surface border-t border-brand-border pt-16 sm:pt-20 pb-12">
       <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
@@ -91,9 +93,12 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#encomendas" className="hover:text-brand-primary transition-colors block">
-                  Módulo de Encomendas & Orçamento
-                </a>
+                <button
+                  onClick={() => setIsCartOpen(true)}
+                  className="hover:text-brand-primary transition-colors block text-left cursor-pointer"
+                >
+                  Reserva sob Encomenda
+                </button>
               </li>
             </ul>
           </div>

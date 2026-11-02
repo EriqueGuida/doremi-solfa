@@ -13,7 +13,6 @@ export default function Navbar({ onOpenRegister, onCategoryClick }) {
     { label: 'Materiais', href: '#materiais' },
     { label: 'Sofás', href: '#sofas' },
     { label: 'Lookbook', href: '#lookbook' },
-    { label: 'Encomendas', href: '#encomendas' },
   ];
 
   const handleLinkClick = (href) => {

@@ -9,7 +9,6 @@ import CatalogSection from './components/CatalogSection';
 import Lookbook from './components/Lookbook';
 import ProductModal from './components/ProductModal';
 import CartDrawer from './components/CartDrawer';
-import OrderForm from './components/OrderForm';
 import RegisterModal from './components/RegisterModal';
 import Toast from './components/Toast';
 import Footer from './components/Footer';
@@ -50,12 +49,9 @@ function MainApp() {
 
         {/* 7. Lookbook: Ambientes Inspiradores com Shop the Look */}
         <Lookbook onSelectProduct={setSelectedProduct} />
-
-        {/* 8. Módulo de Encomendas & Pagamento com Integração de Frete */}
-        <OrderForm onOpenRegister={() => setIsRegisterOpen(true)} />
       </main>
 
-      {/* 9. Rodapé Institucional */}
+      {/* 8. Rodapé Institucional */}
       <Footer />
 
       {/* Modais e Painéis Interativos */}

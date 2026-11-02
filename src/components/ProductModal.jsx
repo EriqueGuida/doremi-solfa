@@ -4,7 +4,7 @@ import { formatCurrency } from '../data/products';
 import { X, ShoppingBag, Ruler, Check, ShieldCheck, Truck, Sparkles, MessageSquare } from 'lucide-react';
 
 export default function ProductModal({ product, onClose }) {
-  const { addToCart } = useCart();
+  const { addToCart, setIsCartOpen } = useCart();
   const [activeImage, setActiveImage] = useState(product?.imagem);
 
   // Sincroniza imagem ativa quando o produto mudar
@@ -125,9 +125,10 @@ export default function ProductModal({ product, onClose }) {
                 <button
                   onClick={() => {
                     addToCart(product);
+                    setIsCartOpen(true);
                     onClose();
                   }}
-                  className="w-full bg-transparent hover:bg-brand-muted/70 text-brand-dark border border-brand-border py-3 px-5 rounded-full font-medium text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200"
+                  className="w-full bg-transparent hover:bg-brand-muted/70 text-brand-dark border border-brand-border py-3 px-5 rounded-full font-medium text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4 text-brand-textMuted" />
                   <span>Salvar em Minha Seleção</span>
@@ -137,11 +138,11 @@ export default function ProductModal({ product, onClose }) {
               <div className="pt-2 border-t border-brand-border text-xs text-brand-textMuted space-y-1">
                 <div className="flex items-center gap-1.5 text-brand-primary font-medium">
                   <Check className="w-3.5 h-3.5" />
-                  <span>Produto disponível para pronta entrega</span>
+                  <span>Produção sob encomenda: 45 dias úteis</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Truck className="w-3.5 h-3.5 text-brand-textMuted" />
-                  <span>Entrega com montagem cortesia no RJ</span>
+                  <span>Entrega Luva Branca especializada com montagem cortesia</span>
                 </div>
               </div>
             </div>
