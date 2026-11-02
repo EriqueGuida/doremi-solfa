@@ -11,12 +11,10 @@ import {
 
 const FILTER_CHIPS = [
   { id: 'all', label: 'Todas as Peças' },
-  { id: 'camas', label: 'Camas DOReMI' },
-  { id: 'sofas', label: 'Sofás SOLFÁ' },
-  { id: 'linho', label: 'Linho Cru' },
-  { id: 'madeira', label: 'Madeira Maciça' },
-  { id: 'veludo', label: 'Veludo Nobre' },
-  { id: 'sofa-cama', label: 'Sofás-Camas' },
+  { id: 'leitos-camas', label: 'Leitos & Camas Plataforma' },
+  { id: 'daybeds-marcenaria', label: 'Daybeds & Marcenaria Nobre' },
+  { id: 'sofas-modulares', label: 'Sofás Autorais & Modulares' },
+  { id: 'veludo-esmeralda', label: 'Estofados em Veludo Esmeralda' },
 ];
 
 export default function CatalogSection({
@@ -66,38 +64,29 @@ export default function CatalogSection({
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    // 1. Filtro por Chip
-    if (activeFilter === 'camas') {
-      result = result.filter((p) => p.categoria === 'doremi');
-    } else if (activeFilter === 'sofas') {
+    // 1. Filtro por Chip Padronizado com as Coleções do Acervo
+    if (activeFilter === 'leitos-camas' || activeFilter === 'camas') {
+      result = result.filter(
+        (p) =>
+          p.categoria === 'doremi' &&
+          (activeFilter === 'camas' || p.id !== 'cama-solteiro-bicama')
+      );
+    } else if (activeFilter === 'daybeds-marcenaria') {
+      result = result.filter(
+        (p) =>
+          p.id === 'cama-solteiro-bicama' ||
+          p.id === 'cama-casal-gavetas' ||
+          (p.material && p.material.toLowerCase().includes('marcenaria')) ||
+          (p.material && p.material.toLowerCase().includes('carvalho'))
+      );
+    } else if (activeFilter === 'sofas-modulares' || activeFilter === 'sofas') {
       result = result.filter((p) => p.categoria === 'solfa');
-    } else if (activeFilter === 'linho') {
+    } else if (activeFilter === 'veludo-esmeralda' || activeFilter === 'veludo') {
       result = result.filter(
         (p) =>
-          (p.tecido && p.tecido.toLowerCase().includes('linho')) ||
-          (p.material && p.material.toLowerCase().includes('linho'))
-      );
-    } else if (activeFilter === 'madeira') {
-      result = result.filter(
-        (p) =>
-          p.categoria === 'doremi' ||
-          (p.material && p.material.toLowerCase().includes('madeira')) ||
-          (p.material && p.material.toLowerCase().includes('carvalho')) ||
-          (p.material && p.material.toLowerCase().includes('nogueira')) ||
-          (p.material && p.material.toLowerCase().includes('freijó')) ||
-          (p.material && p.material.toLowerCase().includes('marcenaria'))
-      );
-    } else if (activeFilter === 'veludo') {
-      result = result.filter(
-        (p) =>
+          p.id === 'sofa-3lug-retro' ||
           (p.tecido && p.tecido.toLowerCase().includes('veludo')) ||
           (p.material && p.material.toLowerCase().includes('veludo'))
-      );
-    } else if (activeFilter === 'sofa-cama') {
-      result = result.filter(
-        (p) =>
-          (p.tipo && p.tipo.toLowerCase().includes('sofá-cama')) ||
-          p.id === 'sofa-cama-2lug'
       );
     }
 
@@ -112,10 +101,16 @@ export default function CatalogSection({
         const matchMaterial = p.material && p.material.toLowerCase().includes(q);
         const matchDim = p.dimensoes && p.dimensoes.toLowerCase().includes(q);
 
-        // Termos especiais
+        // Termos especiais padronizados com as coleções
         const matchCategory =
           (q.includes('cama') && p.categoria === 'doremi') ||
+          (q.includes('leito') && p.categoria === 'doremi') ||
+          (q.includes('daybed') && (p.id === 'cama-solteiro-bicama' || p.id === 'cama-casal-gavetas')) ||
+          (q.includes('marcenaria') && (p.categoria === 'doremi' || (p.material && p.material.toLowerCase().includes('marcenaria')))) ||
           (q.includes('sof') && p.categoria === 'solfa') ||
+          (q.includes('modular') && p.categoria === 'solfa') ||
+          (q.includes('veludo') && (p.tecido && p.tecido.toLowerCase().includes('veludo'))) ||
+          (q.includes('esmeralda') && p.id === 'sofa-3lug-retro') ||
           (q.includes('doremi') && p.categoria === 'doremi') ||
           (q.includes('solfa') && p.categoria === 'solfa');
 
@@ -187,7 +182,7 @@ export default function CatalogSection({
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Buscar por nome, tecido (linho, veludo), madeira, retrátil..."
+              placeholder="Buscar por leitos, daybeds, sofás modulares, linho, veludo esmeralda..."
               className="w-full pl-10 pr-10 py-3 rounded-xl border border-brand-border bg-brand-bg text-brand-dark placeholder-brand-textMuted/60 text-sm focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/10 transition-all"
             />
 

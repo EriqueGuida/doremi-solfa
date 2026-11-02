@@ -28,46 +28,41 @@ export default function Footer() {
           </div>
 
           {/* Coluna 2: Coleções & Acervo */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-3 space-y-4">
             <h4 className="font-serif text-base font-bold text-brand-dark tracking-wide">
               Coleções & Acervo
             </h4>
             <ul className="space-y-2.5 text-xs sm:text-sm text-brand-textMuted">
               <li>
-                <a href="#camas" className="hover:text-brand-primary transition-colors block">
-                  Camas em Madeira Maciça
+                <a href="#catalogo" className="hover:text-brand-primary transition-colors block">
+                  Leitos & Camas Plataforma
                 </a>
               </li>
               <li>
-                <a href="#camas" className="hover:text-brand-primary transition-colors block">
-                  Camas Bicamas & Gaveteiros
+                <a href="#catalogo" className="hover:text-brand-primary transition-colors block">
+                  Daybeds & Marcenaria Nobre
                 </a>
               </li>
               <li>
-                <a href="#sofas" className="hover:text-brand-primary transition-colors block">
-                  Sofás Retráteis em Linho
+                <a href="#catalogo" className="hover:text-brand-primary transition-colors block">
+                  Sofás Autorais & Modulares
                 </a>
               </li>
               <li>
-                <a href="#sofas" className="hover:text-brand-primary transition-colors block">
-                  Sofás-Camas Articulados
+                <a href="#catalogo" className="hover:text-brand-primary transition-colors block">
+                  Estofados em Veludo Esmeralda
                 </a>
               </li>
               <li>
-                <a href="#sofas" className="hover:text-brand-primary transition-colors block">
-                  Sofás Retrô em Veludo Nobre
-                </a>
-              </li>
-              <li>
-                <a href="#catalogo" className="font-semibold text-brand-primary hover:text-brand-primary-hover transition-colors block pt-1">
-                  Ver Todas as Peças (8) →
+                <a href="#catalogo" className="font-medium text-brand-dark hover:text-brand-primary transition-colors block pt-1.5 underline underline-offset-4">
+                  Explorar Todo o Acervo →
                 </a>
               </li>
             </ul>
           </div>
 
           {/* Coluna 3: A Experiência DOReMI SOLFÁ */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-2 space-y-4">
             <h4 className="font-serif text-base font-bold text-brand-dark tracking-wide">
               A Experiência DOReMI
             </h4>
@@ -97,7 +92,7 @@ export default function Footer() {
                   onClick={() => setIsCartOpen(true)}
                   className="hover:text-brand-primary transition-colors block text-left cursor-pointer"
                 >
-                  Reserva sob Encomenda
+                  Programa para Arquitetos & Trade
                 </button>
               </li>
             </ul>
@@ -112,7 +107,7 @@ export default function Footer() {
             <div className="space-y-3 text-xs sm:text-sm text-brand-textMuted">
               <p className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-primary flex-shrink-0 mt-0.5" />
-                <span>Tv. La Donna e Mobile, 134 — Rio de Janeiro, RJ</span>
+                <span>Rua Garcia d'Ávila, 134 — Ipanema, Rio de Janeiro, RJ</span>
               </p>
               
               <p className="flex items-center gap-2.5">
@@ -127,7 +122,7 @@ export default function Footer() {
 
               <p className="flex items-start gap-2.5 pt-1">
                 <Clock className="w-4 h-4 text-brand-primary flex-shrink-0 mt-0.5" />
-                <span>Segunda a Sábado, das 09h às 19h (Atendimento Agendado Disponível)</span>
+                <span>Segunda a Sexta, das 10h às 19h (Atendimento exclusivo sob agendamento prévio)</span>
               </p>
             </div>
           </div>
