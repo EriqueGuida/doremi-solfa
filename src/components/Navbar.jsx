@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { ShoppingBag, Menu, X, User } from 'lucide-react';
 
-export default function Navbar({ onOpenRegister }) {
+export default function Navbar({ onOpenRegister, onCategoryClick }) {
   const { totalItems, setIsCartOpen } = useCart();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -15,6 +15,15 @@ export default function Navbar({ onOpenRegister }) {
     { label: 'Lookbook', href: '#lookbook' },
     { label: 'Encomendas', href: '#encomendas' },
   ];
+
+  const handleLinkClick = (href) => {
+    setMobileMenuOpen(false);
+    if (href === '#camas' && onCategoryClick) {
+      onCategoryClick('camas');
+    } else if (href === '#sofas' && onCategoryClick) {
+      onCategoryClick('sofas');
+    }
+  };
 
   return (
     <header className="sticky top-0 z-40 bg-brand-surface/95 backdrop-blur-md border-b border-brand-border transition-all">
@@ -36,6 +45,7 @@ export default function Navbar({ onOpenRegister }) {
               <a
                 key={link.href}
                 href={link.href}
+                onClick={() => handleLinkClick(link.href)}
                 className="text-sm font-semibold text-brand-dark hover:text-brand-highlight transition-colors duration-200"
               >
                 {link.label}
@@ -88,7 +98,7 @@ export default function Navbar({ onOpenRegister }) {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => handleLinkClick(link.href)}
               className="block px-4 py-2.5 rounded-xl text-base font-medium text-brand-dark hover:bg-brand-muted hover:text-brand-highlight transition-colors"
             >
               {link.label}

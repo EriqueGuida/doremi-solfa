@@ -1,11 +1,36 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CartContext = createContext();
+const CART_STORAGE_KEY = 'doremi_solfa_cart_v2';
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([]);
+  // Inicializa o carrinho com os dados persistidos no localStorage (se existirem)
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem(CART_STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          return parsed;
+        }
+      }
+    } catch (error) {
+      console.warn('Falha ao restaurar o carrinho do localStorage:', error);
+    }
+    return [];
+  });
+
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [toast, setToast] = useState(null);
+
+  // Sincroniza qualquer alteração no carrinho com o localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+    } catch (error) {
+      console.warn('Falha ao persistir o carrinho no localStorage:', error);
+    }
+  }, [cartItems]);
 
   // Exibe mensagem de feedback visual (substitui os alert() nativos)
   const showToast = (message, type = 'success') => {
