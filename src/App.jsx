@@ -3,6 +3,10 @@ import { CartProvider } from './context/CartContext';
 import { products, CATEGORIES } from './data/products';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import LuxuryBar from './components/LuxuryBar';
+import AtelierStory from './components/AtelierStory';
+import MaterialsGuide from './components/MaterialsGuide';
+import Lookbook from './components/Lookbook';
 import ProductCard from './components/ProductCard';
 import ProductModal from './components/ProductModal';
 import CartDrawer from './components/CartDrawer';
@@ -28,8 +32,14 @@ function MainApp() {
         {/* 2. Banner de Apresentação (Hero com a Logo Vertical Proeminente) */}
         <Hero />
 
-        {/* 3. Seção DOReMI — Camas (Widescreen 1560px & Grid Responsivo) */}
-        <section id="camas" className="py-16 sm:py-24 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
+        {/* 3. Barra de Compromissos de Luxo (White-Glove Services) */}
+        <LuxuryBar />
+
+        {/* 4. Seção Atelier: O Fazer Artesanal & Tradição da Marcenaria */}
+        <AtelierStory />
+
+        {/* 5. Seção DOReMI — Camas (Widescreen 1560px & Grid Responsivo) */}
+        <section id="camas" className="py-20 sm:py-28 w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-5 border-b border-brand-border gap-4">
             <div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-wider mb-2">
@@ -45,11 +55,11 @@ function MainApp() {
             </div>
 
             <span className="text-xs sm:text-sm font-semibold text-brand-textMuted bg-brand-surface border border-brand-border px-4 py-2 rounded-xl w-fit shadow-xs">
-              {camas.length} Modelos Disponíveis
+              {camas.length} Modelos em Catálogo
             </span>
           </div>
 
-          {/* Grid Inteligente: 1 col (mobile), 2 cols (tablet), 3 cols (laptop), 4 cols (widescreen) */}
+          {/* Grid de Camas em Proporção Editorial 4:3 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
             {camas.map((cama) => (
               <ProductCard
@@ -61,8 +71,11 @@ function MainApp() {
           </div>
         </section>
 
-        {/* 4. Seção SOLFÁ — Sofás (Widescreen 1560px & Grid Responsivo) */}
-        <section id="sofas" className="py-16 sm:py-24 bg-brand-muted/40 border-t border-brand-border">
+        {/* 6. Guia Tátil de Tecidos & Matérias-Primas */}
+        <MaterialsGuide />
+
+        {/* 7. Seção SOLFÁ — Sofás (Widescreen 1560px & Grid Responsivo) */}
+        <section id="sofas" className="py-20 sm:py-28 bg-brand-muted/40 border-b border-brand-border">
           <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-5 border-b border-brand-border gap-4">
               <div>
@@ -74,15 +87,16 @@ function MainApp() {
                   {CATEGORIES.SOLFA.subtitle}
                 </h2>
                 <p className="text-brand-textMuted text-sm sm:text-base mt-2 max-w-2xl leading-relaxed">
-                  {CATEGORIES.SOLFA.description} Linho cru, veludo retrô e mecanismos retráteis articulados de alto conforto.
+                  {CATEGORIES.SOLFA.description} Linho cru, veludo nobre e mecanismos retráteis articulados de alto conforto.
                 </p>
               </div>
 
               <span className="text-xs sm:text-sm font-semibold text-brand-textMuted bg-brand-surface border border-brand-border px-4 py-2 rounded-xl w-fit shadow-xs">
-                {sofas.length} Modelos Disponíveis
+                {sofas.length} Modelos em Catálogo
               </span>
             </div>
 
+            {/* Grid de Sofás em Proporção Editorial 4:3 */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
               {sofas.map((sofa) => (
                 <ProductCard
@@ -95,11 +109,14 @@ function MainApp() {
           </div>
         </section>
 
-        {/* 5. Módulo de Encomendas & Pagamento (Substitui Encomendas.html) */}
+        {/* 8. Lookbook: Ambientes Inspiradores com Shop the Look */}
+        <Lookbook onSelectProduct={setSelectedProduct} />
+
+        {/* 9. Módulo de Encomendas & Pagamento */}
         <OrderForm onOpenRegister={() => setIsRegisterOpen(true)} />
       </main>
 
-      {/* 6. Rodapé Institucional */}
+      {/* 10. Rodapé Institucional */}
       <Footer />
 
       {/* Modais e Painéis Interativos */}
