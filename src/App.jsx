@@ -13,6 +13,7 @@ import OrderForm from './components/OrderForm';
 import RegisterModal from './components/RegisterModal';
 import Toast from './components/Toast';
 import Footer from './components/Footer';
+import ConciergeButton from './components/ConciergeButton';
 
 function MainApp() {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -70,6 +71,7 @@ function MainApp() {
 
       <CartDrawer />
       <Toast />
+      <ConciergeButton />
     </div>
   );
 }

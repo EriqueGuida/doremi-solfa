@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
-import { X, User, CheckCircle2, AlertCircle } from 'lucide-react';
+import { X, User, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function RegisterModal({ isOpen, onClose }) {
-  const { showToast } = useCart();
+  const { showToast, formatCep } = useCart();
+  const [isCepLoading, setIsCepLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     nome: '',
@@ -21,6 +22,33 @@ export default function RegisterModal({ isOpen, onClose }) {
   const [errors, setErrors] = useState({});
 
   if (!isOpen) return null;
+
+  const handleCepChange = async (e) => {
+    const formatted = formatCep(e.target.value);
+    setFormData((prev) => ({ ...prev, cep: formatted }));
+
+    const clean = formatted.replace(/\D/g, '');
+    if (clean.length === 8) {
+      setIsCepLoading(true);
+      try {
+        const res = await fetch(`https://viacep.com.br/ws/${clean}/json/`);
+        const data = await res.json();
+        if (!data.erro) {
+          setFormData((prev) => ({
+            ...prev,
+            endereco: `${data.logradouro || ''},  - ${data.bairro || ''}, ${data.localidade || ''}/${data.uf || ''}`,
+          }));
+          showToast(`Endereço localizado: ${data.localidade}/${data.uf}`);
+        } else {
+          showToast('CEP não encontrado. Preencha o endereço manualmente.', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsCepLoading(false);
+      }
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -161,14 +189,22 @@ export default function RegisterModal({ isOpen, onClose }) {
                 <label className="block text-xs font-semibold text-brand-dark mb-1">
                   CEP:
                 </label>
-                <input
-                  type="text"
-                  name="cep"
-                  value={formData.cep}
-                  onChange={handleChange}
-                  placeholder="24000-000"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-bg text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary"
-                />
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="cep"
+                    maxLength={9}
+                    value={formData.cep}
+                    onChange={handleCepChange}
+                    placeholder="24000-000"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-brand-border bg-brand-bg text-sm font-mono focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                  />
+                  {isCepLoading && (
+                    <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-brand-primary">
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    </div>
+                  )}
+                </div>
               </div>
 
               <div className="sm:col-span-2">

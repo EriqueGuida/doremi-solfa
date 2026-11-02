@@ -1,88 +1,142 @@
 import React from 'react';
-import { MapPin, Phone, Mail, GraduationCap, Heart } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-surface border-t border-brand-border pt-16 pb-12">
+    <footer className="bg-brand-surface border-t border-brand-border pt-16 sm:pt-20 pb-12">
       <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-brand-border">
+        {/* Grid Principal de 4 Colunas com Estética de Grife */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 pb-14 border-b border-brand-border">
           
-          {/* Coluna 1: Marca & Apresentação */}
-          <div className="md:col-span-5 space-y-4">
-            <img
-              src="/imagens/logo-horizontal.png"
-              alt="DOReMI SOLFÁ Móveis"
-              className="h-12 sm:h-16 w-auto object-contain"
-            />
+          {/* Coluna 1: Marca & Essência Autoral (4 colunas no desktop) */}
+          <div className="lg:col-span-4 space-y-4">
+            <a href="#hero" className="block max-w-sm">
+              <img
+                src="/imagens/logo-horizontal.png"
+                alt="DOReMI SOLFÁ Móveis"
+                className="h-20 sm:h-24 md:h-28 w-auto max-w-full object-contain object-left transition-transform hover:scale-102"
+              />
+            </a>
+
             <p className="text-sm text-brand-textMuted max-w-sm leading-relaxed">
-              Móveis com harmonia e conforto. Especialistas em camas de solteiro e casal (Seção DOReMI) e estofados retráteis e sofá-camas (Seção SOLFÁ).
+              Atelier especializado em mobiliário autoral de alto padrão. Unimos a nobreza da madeira maciça brasileira, a precisão da alfaiataria em tecidos puros e o conforto ergonômico atemporal.
             </p>
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-brand-primary bg-brand-primary/10 px-3 py-1.5 rounded-full">
-              <GraduationCap className="w-4 h-4" />
-              <span>UFF / CEDERJ & SENAI — Tecnologia em Sistemas</span>
-            </div>
           </div>
 
-          {/* Coluna 2: Navegação Rápida */}
-          <div className="md:col-span-3 space-y-3">
-            <h4 className="font-serif text-base font-bold text-brand-dark">
-              Navegação
+          {/* Coluna 2: Coleções & Acervo */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="font-serif text-base font-bold text-brand-dark tracking-wide">
+              Coleções & Acervo
             </h4>
-            <ul className="space-y-2 text-sm text-brand-textMuted">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-brand-textMuted">
               <li>
-                <a href="#hero" className="hover:text-brand-highlight transition-colors">
-                  Apresentação
+                <a href="#camas" className="hover:text-brand-primary transition-colors block">
+                  Camas em Madeira Maciça
                 </a>
               </li>
               <li>
-                <a href="#camas" className="hover:text-brand-highlight transition-colors">
-                  Seção DOReMI (Camas)
+                <a href="#camas" className="hover:text-brand-primary transition-colors block">
+                  Camas Bicamas & Gaveteiros
                 </a>
               </li>
               <li>
-                <a href="#sofas" className="hover:text-brand-highlight transition-colors">
-                  Seção SOLFÁ (Sofás)
+                <a href="#sofas" className="hover:text-brand-primary transition-colors block">
+                  Sofás Retráteis em Linho
                 </a>
               </li>
               <li>
-                <a href="#encomendas" className="hover:text-brand-highlight transition-colors">
-                  Orçamentos & Encomendas
+                <a href="#sofas" className="hover:text-brand-primary transition-colors block">
+                  Sofás-Camas Articulados
+                </a>
+              </li>
+              <li>
+                <a href="#sofas" className="hover:text-brand-primary transition-colors block">
+                  Sofás Retrô em Veludo Nobre
+                </a>
+              </li>
+              <li>
+                <a href="#catalogo" className="font-semibold text-brand-primary hover:text-brand-primary-hover transition-colors block pt-1">
+                  Ver Todas as Peças (8) →
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Coluna 3: Contato & Localização da AD1/AD2 */}
-          <div className="md:col-span-4 space-y-3">
-            <h4 className="font-serif text-base font-bold text-brand-dark">
-              Atendimento & Loja
+          {/* Coluna 3: A Experiência DOReMI SOLFÁ */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="font-serif text-base font-bold text-brand-dark tracking-wide">
+              A Experiência DOReMI
             </h4>
-            <div className="space-y-2.5 text-xs sm:text-sm text-brand-textMuted">
-              <p className="flex items-start gap-2">
+            <ul className="space-y-2.5 text-xs sm:text-sm text-brand-textMuted">
+              <li>
+                <a href="#atelier" className="hover:text-brand-primary transition-colors block">
+                  O Fazer Artesanal do Atelier
+                </a>
+              </li>
+              <li>
+                <a href="#materiais" className="hover:text-brand-primary transition-colors block">
+                  Guia Tátil de Matérias-Primas
+                </a>
+              </li>
+              <li>
+                <a href="#lookbook" className="hover:text-brand-primary transition-colors block">
+                  Lookbook: Espaços Inspiradores
+                </a>
+              </li>
+              <li>
+                <a href="#hero" className="hover:text-brand-primary transition-colors block">
+                  Entrega Luva Branca & Montagem
+                </a>
+              </li>
+              <li>
+                <a href="#encomendas" className="hover:text-brand-primary transition-colors block">
+                  Módulo de Encomendas & Orçamento
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Coluna 4: Flagship Store & Concierge VIP */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="font-serif text-base font-bold text-brand-dark tracking-wide">
+              Boutique Flagship & Concierge
+            </h4>
+            
+            <div className="space-y-3 text-xs sm:text-sm text-brand-textMuted">
+              <p className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-brand-primary flex-shrink-0 mt-0.5" />
                 <span>Tv. La Donna e Mobile, 134 — Rio de Janeiro, RJ</span>
               </p>
-              <p className="flex items-center gap-2">
+              
+              <p className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-brand-primary flex-shrink-0" />
-                <span>(21) 91224-4881</span>
+                <span>(21) 91224-4881 (WhatsApp VIP)</span>
               </p>
-              <p className="flex items-center gap-2">
+              
+              <p className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-brand-primary flex-shrink-0" />
-                <span>contato@doremisolfa.com.br</span>
+                <span>concierge@doremisolfa.com.br</span>
+              </p>
+
+              <p className="flex items-start gap-2.5 pt-1">
+                <Clock className="w-4 h-4 text-brand-primary flex-shrink-0 mt-0.5" />
+                <span>Segunda a Sábado, das 09h às 19h (Atendimento Agendado Disponível)</span>
               </p>
             </div>
           </div>
 
         </div>
 
-        {/* Rodapé Inferior */}
+        {/* Rodapé Inferior Editorial */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-brand-textMuted">
           <div>
-            © {new Date().getFullYear()} DOReMI SOLFÁ Móveis. Todos os direitos reservados.
+            © {new Date().getFullYear()} DOReMI SOLFÁ Móveis Autorais. Todos os direitos reservados.
           </div>
-          <div className="flex items-center gap-1">
-            Desenvolvido com <Heart className="w-3.5 h-3.5 text-brand-highlight fill-brand-highlight" /> para o portfólio de estágio em desenvolvimento de software.
+          <div className="flex items-center gap-2 font-medium">
+            <span>Atelier no Rio de Janeiro</span>
+            <span>•</span>
+            <span>Entrega Especializada em Todo o Brasil</span>
           </div>
         </div>
 
