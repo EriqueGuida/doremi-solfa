@@ -69,32 +69,57 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Coluna Visual: Moldura Editorial com a Logo Vertical */}
+          {/* Coluna Visual: Vitrine Arquitetônica com Tipografia de Ateliê */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative group w-full max-w-md lg:max-w-lg">
               
               {/* Efeito de Sombra Luxuosa */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary/20 via-brand-accent/20 to-brand-highlight/20 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary/20 via-brand-accent/20 to-brand-highlight/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-90 transition-opacity duration-700" />
 
-              <div className="relative bg-brand-surface p-8 sm:p-12 lg:p-14 rounded-3xl border border-brand-border shadow-2xl text-center flex flex-col items-center justify-center">
+              <div className="relative bg-brand-surface p-4 sm:p-5 rounded-3xl border border-brand-border shadow-2xl overflow-hidden flex flex-col">
                 
-                {/* Badge Superior */}
-                <div className="mb-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-muted text-[11px] font-bold text-brand-textMuted uppercase tracking-wider">
-                  <Compass className="w-3 h-3 text-brand-primary" />
-                  <span>Atelier DOReMI SOLFÁ</span>
+                {/* Imagem Arquitetônica da Peça em Destaque */}
+                <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-muted">
+                  <img
+                    src="/imagens/sofa-3lug-retro-2.jpg"
+                    alt="Peça Assinada DOReMI SOLFÁ"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  
+                  <span className="absolute top-3.5 left-3.5 bg-black/60 backdrop-blur-md text-white text-[10px] font-semibold tracking-wider uppercase px-3 py-1.5 rounded-full border border-white/20">
+                    Peça Assinada • Atelier 2026
+                  </span>
+
+                  <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
+                    <span className="text-[10px] tracking-[0.2em] uppercase font-light text-white/80 block">
+                      Composição em Veludo Nobre & Madeira Maciça
+                    </span>
+                    <span className="font-serif text-lg sm:text-xl font-normal">
+                      Sofá 3 Lugares Retrô
+                    </span>
+                  </div>
                 </div>
 
-                <img
-                  src="/imagens/logo-vertical.png"
-                  alt="DOReMI SOLFÁ Móveis"
-                  className="w-full max-h-[380px] sm:max-h-[460px] object-contain transition-transform duration-500 group-hover:scale-103"
-                />
-
-                <div className="mt-6 pt-5 border-t border-brand-border w-full flex items-center justify-between text-xs text-brand-textMuted">
-                  <span>Marcenaria Autoral</span>
-                  <span className="font-serif font-bold text-brand-dark">Estofaria de Luxo</span>
-                  <span>Móveis Exclusivos</span>
+                {/* Placa Tipográfica do Ateliê */}
+                <div className="pt-5 pb-2 px-3 text-center space-y-1">
+                  <div className="font-serif text-2xl sm:text-3xl tracking-[0.28em] uppercase text-brand-dark font-normal">
+                    DOREMI <span className="font-light text-brand-dark/70">SOLFÁ</span>
+                  </div>
+                  <div className="text-[9px] sm:text-[10px] tracking-[0.42em] uppercase text-brand-textMuted font-medium">
+                    ALTA MARCENARIA & ESTOFARIA AUTORAL
+                  </div>
                 </div>
+
+                {/* Rodapé com Especificações */}
+                <div className="mt-3 pt-3 border-t border-brand-border/70 flex items-center justify-between text-[11px] text-brand-textMuted px-2">
+                  <span>Madeira Maciça</span>
+                  <span>•</span>
+                  <span>Costura Manual</span>
+                  <span>•</span>
+                  <span>Design Exclusivo</span>
+                </div>
+
               </div>
 
             </div>

@@ -11,12 +11,13 @@ export default function Footer() {
           
           {/* Coluna 1: Marca & Essência Autoral (4 colunas no desktop) */}
           <div className="lg:col-span-4 space-y-4">
-            <a href="#hero" className="block max-w-sm">
-              <img
-                src="/imagens/logo-horizontal.png"
-                alt="DOReMI SOLFÁ Móveis"
-                className="h-20 sm:h-24 md:h-28 w-auto max-w-full object-contain object-left transition-transform hover:scale-102"
-              />
+            <a href="#hero" className="block max-w-sm group select-none">
+              <span className="font-serif text-3xl sm:text-4xl tracking-[0.28em] sm:tracking-[0.32em] uppercase text-brand-dark font-normal block transition-colors group-hover:text-brand-primary">
+                DOREMI <span className="font-light text-brand-dark/70 group-hover:text-brand-primary">SOLFÁ</span>
+              </span>
+              <span className="text-[10px] sm:text-[11px] tracking-[0.42em] sm:tracking-[0.46em] uppercase text-brand-textMuted font-medium block mt-1.5 pb-2">
+                ATELIER DE MOBILIÁRIO AUTORAL
+              </span>
             </a>
 
             <p className="text-sm text-brand-textMuted max-w-sm leading-relaxed">
