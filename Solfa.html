@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>DOReMI SOlFÁ Móveis - Sofás</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <img src="Imagens/DoremisofaLogoTopo.png" alt="Logo Topo" class="imgLogo">
+        <address class="ender">
+            Tv. La Donna e Mobile, 134<br>
+            Tel: (21) 91224-4881<br>
+            contato@doremisolfa.com.br
+        </address>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="DoremisolfaMoveisHTML5.html">Apresentação</a></li>
+            <li><a href="Doremi.html">Camas</a></li>
+            <li><a href="Solfa.html">Sofás</a></li>
+            <li><a href="Encomendas.html">Encomendas</a></li>
+        </ul>
+    </nav>
+
+    <section class="apres">
+        <h2 class="titulo">Seção SOlFÁ</h2>
+        <table class="tabSofa">
+            <thead>
+                <tr>
+                    <th colspan="3" class="titulo">Sofás e Sofás-camas</th>
+                </tr>
+                <tr>
+                    <th class="linTH">Produto</th>
+                    <th class="linTH">Tipo</th>
+                    <th class="linTH">Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="2" class="colTH">Sofá 2 lugares</th>
+                    <td>
+                        <a href="javascript:void(0)" onclick="mostrarSofa('Sofá 2 lugares', 'Retrátil', 'Imagens/Sofa2lugRetratil100.png', 'Linho Cru', '95 x 87-126 x 180 (AxPxL)', '765,00')">Retrátil</a>
+                    </td>
+                    <td rowspan="4" class="descTab" id="celulaDescricao">
+                        <!-- Exibição padrão inicial (Sofá-Cama 2 lugares conforme Fig. 5) -->
+                        <h3 id="sofaNome">Sofá 2 lugares</h3>
+                        <p id="sofaTipo"><strong>Sofá-Cama</strong></p>
+                        <img id="sofaImg" src="Imagens/SofaCama2lug100.png" alt="Sofá-Cama 2 Lugares">
+                        <p id="sofaTecido">Tecido: Linho</p>
+                        <p id="sofaTamanho">Tamanho: 95 x 97-150 x 180 (AxPxL)</p>
+                        <p id="sofaPreco">Preço: <span class="preco">R$ 4160,00</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="javascript:void(0)" onclick="mostrarSofa('Sofá 2 lugares', 'Sofá-Cama', 'Imagens/SofaCama2lug100.png', 'Linho', '95 x 97-150 x 180 (AxPxL)', '4160,00')">Sofá-Cama</a>
+                    </td>
+                </tr>
+                <tr>
+                    <th rowspan="2" class="colTH">Sofá 3 lugares</th>
+                    <td>
+                        <a href="javascript:void(0)" onclick="mostrarSofa('Sofá 3 lugares', 'Retrátil', 'Imagens/Sofa3lugRetratil100.png', 'Suede', '108 x 95-155 x 200 (AxPxL)', '1900,00')">Retrátil</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="javascript:void(0)" onclick="mostrarSofa('Sofá 3 lugares', 'Retrô', 'Imagens/Sofa3lugRetro100.png', 'Veludo', '90 x 76 x 196 (AxPxL)', '1200,00')">Retrô</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>

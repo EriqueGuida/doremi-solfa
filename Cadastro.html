@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>DOReMI SOLFA Móveis - Cadastro</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <img
+            src="Imagens_AD2/DoremisofaLogoTopo.png"
+            alt="Logo Topo"
+            class="imgLogo"
+        >
+
+        <address class="ender">
+            Tv. La Donna e Mobile, 134<br>
+            Tel: (21) 91224-4881<br>
+            contato@doremisolfa.com.br
+        </address>
+
+    </header>
+
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a
+                    href="DoremisolfaMoveisHTML5.html"
+                    target="_blank"
+                >
+                    Apresentação
+                </a>
+            </li>
+
+
+            <li>
+                <a
+                    href="Doremi.html"
+                    target="_blank"
+                >
+                    Camas
+                </a>
+            </li>
+
+
+            <li>
+                <a
+                    href="Solfa.html"
+                    target="_blank"
+                >
+                    Sofás
+                </a>
+            </li>
+
+
+            <li>
+                <a
+                    href="Encomendas.html"
+                    target="_blank"
+                >
+                    Encomendas
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <section>
+
+        <h1 class="titulo">
+            Cadastro
+        </h1>
+
+
+        <!-- =================================================
+             FORMULÁRIO DE CADASTRO
+             ================================================= -->
+
+        <form
+            class="FormBox"
+            action="#"
+            method="post"
+            onsubmit="return criticarFormulario();"
+        >
+
+
+            <!-- =============================================
+                 IDENTIFICAÇÃO
+                 ============================================= -->
+
+            <fieldset class="FSLinhaInteira">
+
+                <legend>
+                    Identificação
+                </legend>
+
+
+                <div class="LinhaForm">
+
+                    <label
+                        class="LabBox"
+                        for="email"
+                    >
+                        E-mail:
+                    </label>
+
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="InpBoxGnd"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="LinhaForm">
+
+                    <span class="ColEsq">
+
+                        <label
+                            class="LabBox"
+                            for="senhaCad"
+                        >
+                            Senha:
+                        </label>
+
+
+                        <input
+                            type="password"
+                            id="senhaCad"
+                            name="senha"
+                            class="InpBoxMed"
+                            required
+                        >
+
+                    </span>
+
+
+                    <span class="ColDir">
+
+                        <label
+                            class="LabBox"
+                            for="confirme"
+                        >
+                            Confirme:
+                        </label>
+
+
+                        <input
+                            type="password"
+                            id="confirme"
+                            name="confirme"
+                            class="InpBoxMed"
+                            required
+                        >
+
+                    </span>
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- =============================================
+                 DADOS PESSOAIS
+                 ============================================= -->
+
+            <fieldset class="FSLinhaInteira">
+
+                <legend>
+                    Dados Pessoais
+                </legend>
+
+
+                <div class="LinhaForm">
+
+                    <label
+                        class="LabBox"
+                        for="nome"
+                    >
+                        Nome:
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        class="InpBoxGnd"
+                        required
+                    >
+
+                </div>
+
+
+                <div
+                    class="LinhaForm"
+                    id="linhaEnder"
+                >
+
+                    <label
+                        class="LabBox"
+                        for="inpEnder"
+                    >
+                        Endereço:
+                    </label>
+
+
+                    <textarea
+                        id="inpEnder"
+                        name="endereco"
+                        class="InpBoxGnd"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <div class="LinhaForm">
+
+                    <span class="ColEsq">
+
+                        <label
+                            class="LabBox"
+                            for="telefone"
+                        >
+                            Telefone:
+                        </label>
+
+
+                        <input
+                            type="tel"
+                            id="telefone"
+                            name="telefone"
+                            class="InpBoxMed"
+                        >
+
+                    </span>
+
+
+                    <span class="ColDir">
+
+                        <label
+                            class="LabBox"
+                            for="celular"
+                        >
+                            Celular:
+                        </label>
+
+
+                        <input
+                            type="tel"
+                            id="celular"
+                            name="celular"
+                            class="InpBoxMed"
+                        >
+
+                    </span>
+
+                </div>
+
+
+                <!-- =========================================
+                     NASCIMENTO
+                     ========================================= -->
+
+                <fieldset class="FSColEsq">
+
+                    <legend>
+                        Nascimento:
+                    </legend>
+
+
+                    <input
+                        type="number"
+                        name="dia"
+                        class="numDD"
+                    >
+
+                    /
+
+                    <input
+                        type="number"
+                        name="mes"
+                        class="numDD"
+                    >
+
+                    /
+
+                    <input
+                        type="number"
+                        name="ano"
+                        class="numQD"
+                    >
+
+                </fieldset>
+
+
+                <!-- =========================================
+                     SEXO
+                     ========================================= -->
+
+                <fieldset class="FSColDir">
+
+                    <legend>
+                        Sexo:
+                    </legend>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="sexo"
+                            value="M"
+                        >
+
+                        Mas
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="sexo"
+                            value="F"
+                        >
+
+                        Fem
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="sexo"
+                            value="Outro"
+                            checked
+                        >
+
+                        Outro
+
+                    </label>
+
+                </fieldset>
+
+            </fieldset>
+
+
+            <!-- =============================================
+                 BOTÕES
+                 ============================================= -->
+
+            <div class="botoes">
+
+                <input
+                    type="submit"
+                    value="Cadastrar"
+                >
+
+
+                <input
+                    type="reset"
+                    value="Limpar"
+                >
+
+            </div>
+
+        </form>
+
+    </section>
+
+</body>
+
+</html>

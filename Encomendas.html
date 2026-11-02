@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Encomendas - DOReMI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="script.js" defer></script>
+</head>
+
+
+<body>
+
+    <header>
+
+        <img
+            src="Imagens_AD2/DoremisolfaLogoTopo.png"
+            alt="Logo Topo"
+            class="imgLogo"
+        >
+
+        <address class="ender">
+            Tv. La Donna e Mobile, 134<br>
+            Tel: (21) 91224-4881<br>
+            contato@doremisolfa.com.br
+        </address>
+
+    </header>
+
+
+    <nav>
+
+        <ul>
+
+            <li>
+                <a
+                    href="DoremisolfaMoveisHTML5.html"
+                    target="_blank"
+                >
+                    Apresentação
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="Doremi.html"
+                    target="_blank"
+                >
+                    Camas
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="Solfa.html"
+                    target="_blank"
+                >
+                    Sofás
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="Encomendas.html"
+                    target="_blank"
+                >
+                    Encomendas
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <section class="apres">
+
+        <form class="FormBox">
+
+            <!-- =================================================
+                 IDENTIFICAÇÃO
+                 ================================================= -->
+
+            <fieldset class="FSLinhaInteira">
+
+                <legend>Identificação</legend>
+
+
+                <div class="LinhaForm">
+
+                    <div class="ColEsq">
+
+                        <label for="idEmail">
+                            E-mail:
+                        </label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            id="idEmail"
+                            class="InpBoxGnd"
+                        >
+
+                    </div>
+
+
+                    <div class="ColDir">
+
+                        <label for="senhaCad">
+                            Senha:
+                        </label>
+
+                        <input
+                            type="password"
+                            name="senha"
+                            id="senhaCad"
+                            class="InpBoxMed"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <p>
+                    <strong>
+                        <em>
+                            Se você ainda não tem cadastro clique
+                            <a href="Cadastro.html">
+                                aqui
+                            </a>!
+                        </em>
+                    </strong>
+                </p>
+
+            </fieldset>
+
+
+            <!-- =================================================
+                 LISTA DE COMPRAS - QUESTÃO 4
+                 ================================================= -->
+
+            <fieldset class="FSLinhaInteira">
+
+                <legend>Lista de Compras</legend>
+
+
+                <div class="LinhaForm">
+
+                    <div
+                        id="lisSelProd"
+                        class="ColEsq"
+                    >
+
+                        <label for="selProduto">
+                            Produtos:
+                        </label>
+
+
+                        <select
+                            name="produtos"
+                            id="selProduto"
+                        >
+
+                            <!-- Estado inicial da Combo Box -->
+
+                            <option
+                                value=""
+                                disabled
+                                selected
+                            >
+                                Selecione um produto...
+                            </option>
+
+
+                            <optgroup label="Cama Solteiro">
+
+                                <option value="cama1">
+                                    Simples 104 x 104 x 202
+                                </option>
+
+                                <option value="cama2">
+                                    Bicama 70 x 87 x 193
+                                </option>
+
+                            </optgroup>
+
+
+                            <optgroup label="Cama Casal">
+
+                                <option value="cama3">
+                                    Simples 108 x 154 x 210
+                                </option>
+
+                                <option value="cama4">
+                                    Com gavetas 48 x 145 x 195
+                                </option>
+
+                            </optgroup>
+
+
+                            <optgroup label="Sofá 2 lugares">
+
+                                <option value="sofa1">
+                                    Retrátil 95 x 87-126 x 180 Linho Cru
+                                </option>
+
+                                <option value="sofa2">
+                                    Sofá-Cama 95 x 97-150 x 180 Linho
+                                </option>
+
+                            </optgroup>
+
+
+                            <optgroup label="Sofá 3 lugares">
+
+                                <option value="sofa3">
+                                    Retrátil 108 x 95-155 x 200 Suede
+                                </option>
+
+                                <option value="sofa4">
+                                    Retrô 90 x 76 x 196 Veludo
+                                </option>
+
+                            </optgroup>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="ColDir">
+
+                        <button
+                            type="button"
+                            id="btnIncluir"
+                        >
+                            Incluir
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Lista dos produtos incluídos -->
+
+                <div
+                    class="LinhaForm"
+                    id="boxPedidos"
+                >
+
+                    <textarea
+                        id="lisPedArea"
+                        name="pedidos"
+                        readonly
+                    ></textarea>
+
+                </div>
+
+
+                <!-- Valor acumulado -->
+
+                <div class="LinhaForm">
+
+                    <label for="valor">
+                        Valor: R$
+                    </label>
+
+                    <input
+                        type="number"
+                        name="valor"
+                        id="valor"
+                        class="InpBoxMed"
+                        step="0.01"
+                        readonly
+                    >
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- =================================================
+                 DADOS DO CARTÃO
+                 ================================================= -->
+
+            <fieldset class="FSLinhaInteira">
+
+                <legend>Dados do Cartão</legend>
+
+
+                <div class="LinhaForm">
+
+
+                    <!-- Número do cartão -->
+
+                    <div
+                        id="numCartao"
+                        class="ColEsq"
+                    >
+
+                        <label>
+                            Número:
+                        </label>
+
+
+                        <input
+                            type="text"
+                            name="numero1"
+                            class="numQD"
+                            maxlength="4"
+                            inputmode="numeric"
+                        >
+
+                        <input
+                            type="text"
+                            name="numero2"
+                            class="numQD"
+                            maxlength="4"
+                            inputmode="numeric"
+                        >
+
+                        <input
+                            type="text"
+                            name="numero3"
+                            class="numQD"
+                            maxlength="4"
+                            inputmode="numeric"
+                        >
+
+                        <input
+                            type="text"
+                            name="numero4"
+                            class="numQD"
+                            maxlength="4"
+                            inputmode="numeric"
+                        >
+
+                    </div>
+
+
+                    <!-- Validade -->
+
+                    <div
+                        id="valCartao"
+                        class="ColEsq"
+                    >
+
+                        <label>
+                            Validade:
+                        </label>
+
+
+                        <select name="mes">
+
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+
+                        </select>
+
+
+                        <span>/</span>
+
+
+                        <select name="ano">
+
+                            <option value="2026">
+                                2026
+                            </option>
+
+                            <option value="2027">
+                                2027
+                            </option>
+
+                            <option value="2028">
+                                2028
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- Parcelas -->
+
+                    <div
+                        id="boxParcel"
+                        class="ColDir"
+                    >
+
+                        <label for="parcelas">
+                            Parcelas:
+                        </label>
+
+
+                        <select
+                            name="parcelas"
+                            id="parcelas"
+                        >
+
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+
+                        </select>
+
+
+                        <span>
+                            x Sem Juros
+                        </span>
+
+                    </div>
+
+
+                    <!-- Bandeira -->
+
+                    <fieldset
+                        id="fsBandeira"
+                        class="FSColDir"
+                    >
+
+                        <legend>
+                            Bandeira:
+                        </legend>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="bandeira"
+                                value="visa"
+                                checked
+                            >
+
+                            Visa
+
+                        </label>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="bandeira"
+                                value="mastercard"
+                            >
+
+                            Master
+
+                        </label>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="bandeira"
+                                value="elo"
+                            >
+
+                            Elo
+
+                        </label>
+
+                    </fieldset>
+
+                </div>
+
+            </fieldset>
+
+
+            <!-- =================================================
+                 BOTÕES
+                 ================================================= -->
+
+            <div class="botoes">
+
+                <button type="submit">
+                    Confirmar
+                </button>
+
+                <button type="reset">
+                    Limpar
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</body>
+
+</html>
