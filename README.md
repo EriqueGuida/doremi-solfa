@@ -35,10 +35,11 @@ Este repositório documenta a evolução completa de uma aplicação web, demons
   - Configuração do novo ecossistema moderno com **Vite**, **React**, **Tailwind CSS** e **Lucide React**.
   - Criação da nova documentação de acompanhamento e configuração do `.gitignore`.
 
-- [ ] **Milestone 1: Identidade Visual, Design System & Modelagem de Dados**
-  - Definição da paleta de cores contemporânea (Terracota, Verde Oliva e Linho).
-  - Estruturação dos tokens de tipografia (*Plus Jakarta Sans* e *Playfair Display*).
-  - Modelagem do catálogo original (Camas DOReMI e Sofás SOLFÁ) em arquivo JSON estruturado.
+- [x] **Milestone 1: Identidade Visual, Design System & Modelagem de Dados**
+  - Criação do Brand Kit e manual oficial de marca interativo em [`style.html`](style.html).
+  - Definição da paleta oficial extraída das novas logos: Verde-Floresta (`#1F563E`), Terracota (`#B34229`), Mostarda (`#DFA034`), Off-White (`#FAF8F5`) e Carvão Escuro (`#1C2521`).
+  - Configuração dos tokens tipográficos no Tailwind e Google Fonts (*Marcellus* para títulos e *Plus Jakarta Sans* para interface).
+  - Modelagem do catálogo original (8 produtos da UFF: 4 camas e 4 sofás) em [`src/data/products.js`](src/data/products.js) com especificações e funções utilitárias.
 
 - [ ] **Milestone 2: Reconstrução Funcional com React (v1.0)**
   - Criação de Navbar responsiva com logo e menu mobile.
@@ -59,7 +60,7 @@ Este repositório documenta a evolução completa de uma aplicação web, demons
 - **Core:** [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
 - **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
 - **Ícones:** [Lucide React](https://lucide.dev/)
-- **Tipografia:** Google Fonts (*Plus Jakarta Sans*, *Playfair Display*)
+- **Tipografia:** Google Fonts (*Marcellus*, *Plus Jakarta Sans*)
 
 ---
 

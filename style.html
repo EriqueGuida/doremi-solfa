@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOReMI SOLFÁ Móveis — Brand Kit & Guia de Estilo Oficial</title>
+  
+  <!-- Tipografia Oficial da Marca -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ========================================================
+       DESIGN TOKENS OFICIAIS — DOReMI SOLFÁ MÓVEIS
+       ======================================================== */
+    :root {
+      /* Cores da Marca */
+      --color-primary: #1F563E;            /* Verde-Floresta do Sofá */
+      --color-primary-hover: #16402E;
+      --color-highlight: #B34229;          /* Terracota da Tipografia */
+      --color-highlight-hover: #96351F;
+      --color-accent: #DFA034;             /* Mostarda da Almofada */
+      --color-accent-hover: #C58B28;
+      
+      /* Superfícies & Neutros */
+      --color-bg: #FAF8F5;                 /* Fundo Principal Off-White */
+      --color-surface: #FFFFFF;            /* Fundo de Cards / Modais */
+      --color-muted: #F3EFEA;              /* Areia Suave para seções secundárias */
+      --color-border: #E8E4DC;             /* Borda Areia */
+      
+      /* Tipografia & Textos */
+      --color-text-main: #1C2521;          /* Carvão Escuro (Alto Contraste) */
+      --color-text-muted: #64746D;         /* Cinza Médio Natural */
+      
+      --font-title: 'Marcellus', Georgia, serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--color-bg);
+      color: var(--color-text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      padding-bottom: 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, .font-title {
+      font-family: var(--font-title);
+      letter-spacing: 0.2px;
+    }
+
+    /* Container de Alta Largura (Ocupa monitores Desktop modernos e se adapta no mobile) */
+    .container {
+      width: 100%;
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3.5vw, 48px);
+    }
+
+    /* Topo do Guia de Estilo (Hero Fluid) */
+    .brand-hero {
+      background: #1C2521;
+      color: #FFFFFF;
+      padding: clamp(36px, 5vw, 64px) 0;
+      margin-bottom: clamp(28px, 4vw, 48px);
+      border-bottom: 5px solid var(--color-highlight);
+    }
+    .brand-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(223, 160, 52, 0.15);
+      border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: clamp(10.5px, 1.5vw, 12px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .brand-hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+    .brand-hero p {
+      font-size: clamp(14px, 1.8vw, 16px);
+      color: #D1D5DB;
+      max-width: 900px;
+      line-height: 1.6;
+    }
+
+    /* Seções do Brand Kit */
+    .brand-section {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: clamp(16px, 2vw, 24px);
+      padding: clamp(20px, 3.5vw, 44px);
+      margin-bottom: clamp(24px, 3.5vw, 40px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .section-header {
+      margin-bottom: clamp(20px, 3vw, 32px);
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .section-header h2 {
+      font-size: clamp(20px, 2.8vw, 28px);
+      color: var(--color-text-main);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .section-header p {
+      color: var(--color-text-muted);
+      font-size: clamp(13px, 1.5vw, 15px);
+      margin-top: 4px;
+    }
+
+    /* ========================================================
+       1. SEÇÃO DE LOGOTIPOS (RESPONSIVO)
+       ======================================================== */
+    .logos-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 960px) {
+      .logos-grid {
+        grid-template-columns: 1.5fr 1fr;
+      }
+    }
+
+    .logo-card {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: clamp(18px, 2.5vw, 28px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .logo-card-tag {
+      align-self: flex-start;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 18px;
+    }
+    .logo-display {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      padding: clamp(16px, 3vw, 32px);
+      width: 100%;
+      min-height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+    .logo-display img.horizontal {
+      max-height: 64px;
+      max-width: 95%;
+      height: auto;
+      object-fit: contain;
+    }
+    .logo-display img.vertical {
+      max-height: 170px;
+      max-width: 95%;
+      height: auto;
+      object-fit: contain;
+    }
+    .logo-details {
+      text-align: left;
+      width: 100%;
+    }
+    .logo-details h3 {
+      font-size: 17px;
+      margin-bottom: 4px;
+      color: var(--color-text-main);
+    }
+    .logo-details p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    /* ========================================================
+       2. SEÇÃO DE CORES (PALETA OFICIAL)
+       ======================================================== */
+    .color-swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+      gap: clamp(14px, 2vw, 22px);
+    }
+    .color-token-card {
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--color-surface);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .color-token-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+    }
+    .color-preview-block {
+      height: clamp(85px, 12vw, 110px);
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px 16px;
+    }
+    .color-hex-tag {
+      background: rgba(0,0,0,0.55);
+      color: #FFFFFF;
+      font-family: monospace;
+      font-size: 12px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      backdrop-filter: blur(4px);
+    }
+    .color-token-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex-grow: 1;
+    }
+    .color-token-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-main);
+    }
+    .color-token-role {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-highlight);
+    }
+    .color-token-desc {
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+    .color-token-legacy {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px dashed var(--color-border);
+      font-size: 11px;
+      color: #8C7B75;
+    }
+
+    /* ========================================================
+       3. SEÇÃO TIPOGRÁFICA
+       ======================================================== */
+    .typography-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 860px) {
+      .typography-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .type-specimen {
+      background: var(--color-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: clamp(18px, 2.5vw, 28px);
+    }
+    .type-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: var(--color-highlight);
+      color: #FFFFFF;
+      margin-bottom: 12px;
+    }
+    .type-sample-large {
+      font-size: clamp(26px, 3.5vw, 34px);
+      color: var(--color-text-main);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .type-meta {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+    }
+    .type-scale-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid var(--color-border);
+      padding-top: 16px;
+    }
+    .type-scale-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 13.5px;
+      gap: 12px;
+    }
+
+    /* ========================================================
+       4. SHOWCASE DE COMPONENTES REAIS
+       ======================================================== */
+    .preview-header-mockup {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px clamp(16px, 2.5vw, 28px);
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      border-radius: 14px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .preview-header-mockup img {
+      height: clamp(34px, 4vw, 44px);
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .preview-nav-mockup {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 2vw, 24px);
+      flex-wrap: wrap;
+    }
+    .preview-nav-mockup a {
+      text-decoration: none;
+      color: var(--color-text-main);
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .preview-nav-mockup a:hover {
+      color: var(--color-highlight);
+    }
+    .btn-cart-mockup {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      padding: 8px 18px;
+      border-radius: 24px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-cart-mockup:hover {
+      background: var(--color-primary-hover);
+    }
+
+    /* Grid dos Produtos Reais */
+    .products-showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(16px, 2.5vw, 28px);
+      margin-bottom: 32px;
+    }
+    .card-product {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card-product:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    .card-img-wrapper {
+      position: relative;
+      background: var(--color-muted);
+      height: clamp(170px, 18vw, 210px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card-img-wrapper img {
+      max-height: 85%;
+      max-width: 90%;
+      object-fit: contain;
+    }
+    .badge-category {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .badge-accent {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: var(--color-accent);
+      color: #1C2521;
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 14px;
+    }
+    .card-body {
+      padding: clamp(16px, 2.5vw, 24px);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .card-body h4 {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--color-text-main);
+      margin-bottom: 6px;
+    }
+    .card-specs {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--color-border);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .price-tag {
+      font-size: clamp(19px, 2.5vw, 22px);
+      font-weight: 700;
+      color: var(--color-highlight);
+    }
+    .installments-tag {
+      font-size: 11.5px;
+      color: var(--color-text-muted);
+      display: block;
+    }
+    .btn-buy {
+      background: var(--color-primary);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-buy:hover {
+      background: var(--color-primary-hover);
+    }
+
+    /* Bloco de Código Tailwind */
+    .code-container {
+      background: #111827;
+      color: #E5E7EB;
+      padding: clamp(18px, 3vw, 32px);
+      border-radius: 14px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(11.5px, 1.4vw, 13px);
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+    .code-container h3 {
+      font-family: var(--font-body);
+      color: #9CA3AF;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo Institucional do Brand Kit (Hero Widescreen) -->
+  <header class="brand-hero">
+    <div class="container">
+      <div class="brand-hero-badge">
+        ✦ Milestone 1 — Manual Oficial de Marca
+      </div>
+      <h1>DOReMI SOLFÁ Móveis</h1>
+      <p>
+        Guia definitivo de identidade visual para a modernização da aplicação em <strong>React</strong>. 
+        Este kit reúne os logotipos oficiais, os tokens de cores harmonizados com a essência do projeto acadêmico da UFF, o sistema tipográfico e os padrões visuais para todos os componentes.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ========================================================
+         1. SISTEMA DE LOGOTIPOS
+         ======================================================== -->
+    <section class="brand-section">
+      <div class="section-header">
+        <h2>🏷️ 1. Aplicação dos Logotipos Oficiais</h2>
+        <p>Diretrizes de uso para os dois formatos de logo vetorizados criados para a marca.</p>
+      </div>
+
+      <div class="logos-grid">
+        
+        <!-- Logo Horizontal -->
+        <div class="logo-card">
+          <span class="logo-card-tag">Aplicação Primária (Navbar & Header)</span>
+          <div class="logo-display">
+            <img src="imagens/logo-horizontal.png" alt="Logo Horizontal DOReMI SOLFÁ Móveis" class="horizontal">
+          </div>
+          <div class="logo-details">
+            <h3>Versão Horizontal</h3>
+            <p><strong>Uso:</strong> Barra de navegação superior fixa (Navbar), cabeçalhos de impressão e rodapés simplificados.</p>
+            <p style="margin-top: 4px;"><strong>Arquivo:</strong> <code>imagens/logo-horizontal.png</code></p>
+          </div>
+        </div>
+
+        <!-- Logo Vertical -->
+        <div class="logo-card">
+          <span class="logo-card-tag" style="background: var(--color-highlight);">Aplicação Destaque (Hero & Splash)</span>
+          <div class="logo-display">
+            <img src="imagens/logo-vertical.png" alt="Logo Vertical DOReMI SOLFÁ Móveis" class="vertical">
+          </div>
+          <div class="logo-details">
+            <h3>Versão Vertical / Selo</h3>
+            <p><strong>Uso:</strong> Banner principal da Home (Hero), tela de apresentação, posts de catálogo e selos de qualidade.</p>
+            <p style="margin-top: 4px;"><strong>Arquivo:</strong> <code>imagens/logo-vertical.png</code></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         2. PALETA DE CORES DEFINITIVA (DESIGN TOKENS)
+         ======================================================== -->
+    <section class="brand-section">
+      <div class="section-header">
+        <h2>🎨 2. Paleta de Cores Oficial (Design Tokens)</h2>
+        <p>Cores extraídas da identidade visual, combinando o acolhimento do mobiliário com alto contraste para e-commerce.</p>
+      </div>
+
+      <div class="color-swatches-grid">
+        
+        <!-- Verde Floresta -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #1F563E;">
+            <span class="color-hex-tag">#1F563E</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Verde-Floresta</span>
+            <span class="color-token-role">Cor Primária da Marca</span>
+            <span class="color-token-desc">Extraído do estofado do sofá. Utilizado para botões principais (CTA), Navbar e badges principais.</span>
+            <span class="color-token-legacy">Substitui: Verde de tabela (#228855) da AD1.</span>
+          </div>
+        </div>
+
+        <!-- Terracota -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #B34229;">
+            <span class="color-hex-tag">#B34229</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Terracota Artesanal</span>
+            <span class="color-token-role">Cor de Destaque & Preços</span>
+            <span class="color-token-desc">Extraído da tipografia do logotipo. Utilizado para valores de produtos, links ativos e elementos de atenção.</span>
+            <span class="color-token-legacy">Substitui: Vermelho puro (#E53646) da AD1.</span>
+          </div>
+        </div>
+
+        <!-- Mostarda -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #DFA034;">
+            <span class="color-hex-tag" style="background: rgba(0,0,0,0.65);">#DFA034</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Mostarda Quente</span>
+            <span class="color-token-role">Cor de Acento</span>
+            <span class="color-token-desc">Extraído da almofada do sofá. Utilizado para selos de novidades, estrelas de avaliação e detalhes visuais.</span>
+            <span class="color-token-legacy">Novo elemento de contraste acolhedor.</span>
+          </div>
+        </div>
+
+        <!-- Off-White Fundo -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #FAF8F5; border-bottom: 1px solid #E8E4DC;">
+            <span class="color-hex-tag" style="background: #1C2521;">#FAF8F5</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Off-White / Creme Suave</span>
+            <span class="color-token-role">Fundo Geral (Background)</span>
+            <span class="color-token-desc">Base acolhedora para leitura limpa e confortável, sem o desgaste visual do branco frio.</span>
+            <span class="color-token-legacy">Substitui: Amarelo-esverdeado (#E6F0B5).</span>
+          </div>
+        </div>
+
+        <!-- Superfície / Cards -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #FFFFFF; border-bottom: 1px solid #E8E4DC;">
+            <span class="color-hex-tag" style="background: #1C2521;">#FFFFFF</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Branco Puro</span>
+            <span class="color-token-role">Superfície de Cards & Modais</span>
+            <span class="color-token-desc">Garante foco total na fotografia dos móveis e clareza na visualização das especificações técnicas.</span>
+            <span class="color-token-legacy">Substitui: Amarelo forte (#FFFFBB).</span>
+          </div>
+        </div>
+
+        <!-- Borda Areia -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #E8E4DC;">
+            <span class="color-hex-tag" style="background: #1C2521;">#E8E4DC</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Borda Areia</span>
+            <span class="color-token-role">Divisores & Bordas</span>
+            <span class="color-token-desc">Linhas sutis para separação de seções, caixas de input e contornos de cards.</span>
+            <span class="color-token-legacy">Substitui: Bordas azuis rígidas (#226699).</span>
+          </div>
+        </div>
+
+        <!-- Carvão Escuro (Texto) -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #1C2521;">
+            <span class="color-hex-tag">#1C2521</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Carvão Escuro</span>
+            <span class="color-token-role">Texto Principal</span>
+            <span class="color-token-desc">Preto aquecido de altíssimo contraste (acessibilidade AAA) para títulos e descrições.</span>
+            <span class="color-token-legacy">Substitui: Azul escuro (#000066).</span>
+          </div>
+        </div>
+
+        <!-- Cinza Médio Natural -->
+        <div class="color-token-card">
+          <div class="color-preview-block" style="background: #64746D;">
+            <span class="color-hex-tag">#64746D</span>
+          </div>
+          <div class="color-token-body">
+            <span class="color-token-name">Cinza Natural</span>
+            <span class="color-token-role">Texto Secundário</span>
+            <span class="color-token-desc">Para medidas técnicas (AxLxP), legendas de tecidos, parcelamentos e placeholders.</span>
+            <span class="color-token-legacy">Leitura suave e equilibrada.</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. SISTEMA TIPOGRÁFICO OFICIAL
+         ======================================================== -->
+    <section class="brand-section">
+      <div class="section-header">
+        <h2>🔤 3. Sistema Tipográfico Oficial</h2>
+        <p>Combinação selecionada para harmonizar diretamente com as letras esculpidas do logotipo.</p>
+      </div>
+
+      <div class="typography-grid">
+        
+        <!-- Fonte 1: Marcellus -->
+        <div class="type-specimen">
+          <span class="type-badge">Fonte para Títulos & Branding</span>
+          <div class="type-sample-large" style="font-family: 'Marcellus', serif;">
+            Marcellus Serif
+          </div>
+          <p class="type-meta">
+            Inspirada nas inscrições clássicas romanas trajanas com serifas alargadas elegantes. 
+            Conversa com perfeição visual com o letreiro <strong>DOReMI SOlFÁ</strong> da logo.
+          </p>
+          <div class="type-scale-list">
+            <div class="type-scale-item" style="font-family: 'Marcellus', serif; font-size: 24px;">
+              <span>Título de Destaque (H1 / H2)</span>
+              <span style="color: var(--color-text-muted); font-size: 11px;">24px - 32px</span>
+            </div>
+            <div class="type-scale-item" style="font-family: 'Marcellus', serif; font-size: 18px;">
+              <span>Nome do Produto (H3 / H4)</span>
+              <span style="color: var(--color-text-muted); font-size: 11px;">18px - 20px</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fonte 2: Plus Jakarta Sans -->
+        <div class="type-specimen">
+          <span class="type-badge" style="background: var(--color-primary);">Fonte de Interface & Textos</span>
+          <div class="type-sample-large" style="font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700;">
+            Plus Jakarta Sans
+          </div>
+          <p class="type-meta">
+            Sem-serifa geométrica moderna e acolhedora, combinando com o subtítulo <em>"Sofás, camas e sofás-camas"</em>. Máxima nitidez para medidas técnicas e botões.
+          </p>
+          <div class="type-scale-list">
+            <div class="type-scale-item" style="font-weight: 600;">
+              <span>Botões e Menus de Ação</span>
+              <span style="color: var(--color-text-muted); font-size: 11px;">Semi-bold 14px</span>
+            </div>
+            <div class="type-scale-item" style="font-weight: 400; color: var(--color-text-muted);">
+              <span>Medidas: 108 x 154 x 210 (AxLxP)</span>
+              <span style="color: var(--color-text-muted); font-size: 11px;">Regular 13px</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. COMPONENTES EM AÇÃO REAL
+         ======================================================== -->
+    <section class="brand-section">
+      <div class="section-header">
+        <h2>🛋️ 4. Aplicação Prática nos Componentes do E-Commerce</h2>
+        <p>Demonstração visual de como a nova identidade veste as páginas e produtos originais.</p>
+      </div>
+
+      <!-- Mockup do Header -->
+      <div class="preview-header-mockup">
+        <img src="imagens/logo-horizontal.png" alt="DOReMI SOLFÁ">
+        <nav class="preview-nav-mockup">
+          <a href="#camas">Camas (DOReMI)</a>
+          <a href="#sofas">Sofás (SOLFÁ)</a>
+          <a href="#encomendas">Encomendas</a>
+          <a href="#cadastro">Cadastro</a>
+          <button class="btn-cart-mockup">
+            🛒 <span>Carrinho (2)</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Cards de Exemplo Oficial -->
+      <div class="products-showcase-grid">
+
+        <!-- Produto 1: Cama -->
+        <article class="card-product">
+          <div class="card-img-wrapper">
+            <span class="badge-category">DOReMI</span>
+            <span class="badge-accent">Madeira Maciça</span>
+            <img src="imagens/CamaCasalSImples_150.jpg" alt="Cama Casal Simples">
+          </div>
+          <div class="card-body">
+            <h4>Cama de Casal Simples</h4>
+            <div class="card-specs">
+              <span><strong>Dimensões:</strong> 108 x 154 x 210 (AxLxP)</span>
+              <span><strong>Material:</strong> Madeira Nobre Tratada</span>
+            </div>
+            <div class="card-footer">
+              <div>
+                <span class="price-tag">R$ 680,00</span>
+                <span class="installments-tag">ou 6x de R$ 113,33 sem juros</span>
+              </div>
+              <button class="btn-buy">Encomendar</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Produto 2: Sofá Retrátil -->
+        <article class="card-product">
+          <div class="card-img-wrapper">
+            <span class="badge-category">SOLFÁ</span>
+            <span class="badge-accent">Linho Cru</span>
+            <img src="imagens/Sofa2lugRetratil150.png" alt="Sofá 2 Lugares Retrátil">
+          </div>
+          <div class="card-body">
+            <h4>Sofá 2 Lugares Retrátil</h4>
+            <div class="card-specs">
+              <span><strong>Tecido:</strong> Linho Cru Selecionado</span>
+              <span><strong>Dimensões:</strong> 95 x 87-126 x 180 (AxPxL)</span>
+            </div>
+            <div class="card-footer">
+              <div>
+                <span class="price-tag">R$ 765,00</span>
+                <span class="installments-tag">ou 6x de R$ 127,50 sem juros</span>
+              </div>
+              <button class="btn-buy">Encomendar</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Produto 3: Sofá-Cama -->
+        <article class="card-product">
+          <div class="card-img-wrapper">
+            <span class="badge-category">SOLFÁ</span>
+            <span class="badge-accent">Sofá-Cama</span>
+            <img src="imagens/SofaCama2lug150.png" alt="Sofá-Cama 2 Lugares">
+          </div>
+          <div class="card-body">
+            <h4>Sofá-Cama 2 Lugares</h4>
+            <div class="card-specs">
+              <span><strong>Tecido:</strong> Linho Nobre Articulável</span>
+              <span><strong>Dimensões:</strong> 95 x 97-150 x 180 (AxPxL)</span>
+            </div>
+            <div class="card-footer">
+              <div>
+                <span class="price-tag">R$ 4.160,00</span>
+                <span class="installments-tag">ou 10x de R$ 416,00 sem juros</span>
+              </div>
+              <button class="btn-buy">Encomendar</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. TOKENS PRONTOS PARA O TAILWIND CONFIG
+         ======================================================== -->
+    <section class="brand-section">
+      <div class="section-header">
+        <h2>⚙️ 5. Configuração Técnica Oficial (Tailwind CSS)</h2>
+        <p>Tokens definitivos prontos para serem inseridos no <code>tailwind.config.js</code> do projeto.</p>
+      </div>
+
+      <div class="code-container">
+        <h3>// tailwind.config.js — Configuração Definitiva da Marca</h3>
+<pre>export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          primary: '#1F563E',         // Verde-Floresta do Sofá (Navbar / Botões Principais)
+          'primary-hover': '#16402E',
+          highlight: '#B34229',       // Terracota da Tipografia (Preços / Badges / Destaques)
+          'highlight-hover': '#96351F',
+          accent: '#DFA034',          // Mostarda da Almofada (Acentos / Novidades)
+          'accent-hover': '#C58B28',
+          bg: '#FAF8F5',              // Fundo Principal (Off-White / Creme Suave)
+          surface: '#FFFFFF',         // Superfície de Cards e Modais (Branco Puro)
+          muted: '#F3EFEA',           // Fundo Areia Secundário
+          border: '#E8E4DC',          // Borda Areia Suave
+          dark: '#1C2521',            // Texto Principal (Carvão Escuro)
+          textMuted: '#64746D',       // Texto Secundário (Cinza Médio Natural)
+        }
+      },
+      fontFamily: {
+        serif: ['"Marcellus"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+      }
+    },
+  },
+  plugins: [],
+};</pre>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
