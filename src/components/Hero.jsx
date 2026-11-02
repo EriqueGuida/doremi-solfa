@@ -57,7 +57,7 @@ export default function Hero() {
               {/* Fotografia Monumental de Arquitetura */}
               <img
                 src="/imagens/hero-rebranding-2.jpg"
-                alt="Living de Arquitetura Contemporânea com o Sofá Retrô DOReMI SOLFÁ"
+                alt="Living de Arquitetura Contemporânea com o Sofá Escultural Visconti em Veludo Esmeralda"
                 className="w-full h-full object-cover object-center transition-transform duration-1000 group-hover:scale-103"
               />
 
@@ -71,7 +71,7 @@ export default function Hero() {
                     Sala de Estar Integrada
                   </span>
                   <span className="font-serif text-xl sm:text-2xl font-normal text-white">
-                    Sofá 3 Lugares Retrô em Veludo Nobre
+                    Sofá Escultural Visconti em Veludo Esmeralda
                   </span>
                 </div>
                 

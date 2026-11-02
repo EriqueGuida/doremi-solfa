@@ -732,7 +732,7 @@ export default function OrderForm({ onOpenRegister }) {
 
                 <div>
                   <label className="block text-xs font-semibold text-brand-dark mb-1">
-                    Parcelamento sem Juros:
+                    Opções de Pagamento:
                   </label>
                   <select
                     value={parcelas}
@@ -741,7 +741,7 @@ export default function OrderForm({ onOpenRegister }) {
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
                       <option key={num} value={num}>
-                        {num}x Sem Juros ({formatCurrency(totalOrder > 0 ? totalOrder / num : 0)})
+                        {num}x de {formatCurrency(totalOrder > 0 ? totalOrder / num : 0)}
                       </option>
                     ))}
                   </select>
@@ -799,7 +799,7 @@ export default function OrderForm({ onOpenRegister }) {
               </div>
 
               <div className="text-right text-xs text-brand-textMuted">
-                em até {parcelas}x de {formatCurrency(valorParcela)} sem juros
+                em {parcelas}x de {formatCurrency(valorParcela)}
               </div>
             </div>
 

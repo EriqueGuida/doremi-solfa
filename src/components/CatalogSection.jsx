@@ -7,23 +7,16 @@ import {
   ArrowUpDown,
   SlidersHorizontal,
   RotateCcw,
-  Sparkles,
-  Bed,
-  Sofa,
-  Layers,
-  Trees,
-  Gem,
-  PackageOpen,
 } from 'lucide-react';
 
 const FILTER_CHIPS = [
-  { id: 'all', label: 'Todas as Peças', count: 8, icon: Sparkles },
-  { id: 'camas', label: 'Camas DOReMI', count: 4, icon: Bed },
-  { id: 'sofas', label: 'Sofás SOLFÁ', count: 4, icon: Sofa },
-  { id: 'linho', label: 'Linho Cru', count: 2, icon: Layers },
-  { id: 'madeira', label: 'Madeira Maciça', count: 4, icon: Trees },
-  { id: 'veludo', label: 'Veludo Nobre', count: 1, icon: Gem },
-  { id: 'sofa-cama', label: 'Sofás-Camas', count: 1, icon: PackageOpen },
+  { id: 'all', label: 'Todas as Peças' },
+  { id: 'camas', label: 'Camas DOReMI' },
+  { id: 'sofas', label: 'Sofás SOLFÁ' },
+  { id: 'linho', label: 'Linho Cru' },
+  { id: 'madeira', label: 'Madeira Maciça' },
+  { id: 'veludo', label: 'Veludo Nobre' },
+  { id: 'sofa-cama', label: 'Sofás-Camas' },
 ];
 
 export default function CatalogSection({
@@ -80,20 +73,32 @@ export default function CatalogSection({
       result = result.filter((p) => p.categoria === 'solfa');
     } else if (activeFilter === 'linho') {
       result = result.filter(
-        (p) => p.tecido && p.tecido.toLowerCase().includes('linho')
+        (p) =>
+          (p.tecido && p.tecido.toLowerCase().includes('linho')) ||
+          (p.material && p.material.toLowerCase().includes('linho'))
       );
     } else if (activeFilter === 'madeira') {
       result = result.filter(
         (p) =>
           p.categoria === 'doremi' ||
-          (p.material && p.material.toLowerCase().includes('madeira'))
+          (p.material && p.material.toLowerCase().includes('madeira')) ||
+          (p.material && p.material.toLowerCase().includes('carvalho')) ||
+          (p.material && p.material.toLowerCase().includes('nogueira')) ||
+          (p.material && p.material.toLowerCase().includes('freijó')) ||
+          (p.material && p.material.toLowerCase().includes('marcenaria'))
       );
     } else if (activeFilter === 'veludo') {
       result = result.filter(
-        (p) => p.tecido && p.tecido.toLowerCase().includes('veludo')
+        (p) =>
+          (p.tecido && p.tecido.toLowerCase().includes('veludo')) ||
+          (p.material && p.material.toLowerCase().includes('veludo'))
       );
     } else if (activeFilter === 'sofa-cama') {
-      result = result.filter((p) => p.tipo === 'Sofá-Cama');
+      result = result.filter(
+        (p) =>
+          (p.tipo && p.tipo.toLowerCase().includes('sofá-cama')) ||
+          p.id === 'sofa-cama-2lug'
+      );
     }
 
     // 2. Busca em Tempo Real
@@ -221,32 +226,23 @@ export default function CatalogSection({
           </div>
         </div>
 
-        {/* Pílulas de Filtros Horizontais (Chips com Ícones) */}
+        {/* Filtros Editoriais Limpos (Sem Contadores, Microinteração Suave) */}
         <div className="pt-2 border-t border-brand-border/60">
           <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
             {FILTER_CHIPS.map((chip) => {
-              const Icon = chip.icon;
               const isActive = activeFilter === chip.id;
 
               return (
                 <button
                   key={chip.id}
                   onClick={() => setActiveFilter(chip.id)}
-                  className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-full text-xs tracking-wider uppercase whitespace-nowrap transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-brand-primary text-white shadow-md shadow-brand-primary/20 scale-102'
-                      : 'bg-brand-bg text-brand-textMuted hover:text-brand-dark hover:bg-brand-muted/70 border border-brand-border'
+                      ? 'bg-brand-dark text-white border border-brand-dark font-medium shadow-sm scale-[1.02]'
+                      : 'bg-transparent text-brand-textMuted hover:text-brand-dark border border-brand-border hover:border-brand-dark/40 font-normal hover:bg-brand-muted/40 hover:scale-[1.01]'
                   }`}
                 >
-                  <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-brand-accent' : 'text-brand-primary'}`} />
-                  <span>{chip.label}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-brand-muted text-brand-textMuted'
-                    }`}
-                  >
-                    {chip.count}
-                  </span>
+                  {chip.label}
                 </button>
               );
             })}

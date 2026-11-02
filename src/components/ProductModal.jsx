@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { formatCurrency } from '../data/products';
-import { X, ShoppingBag, Ruler, Check, ShieldCheck, Truck, Sparkles } from 'lucide-react';
+import { X, ShoppingBag, Ruler, Check, ShieldCheck, Truck, Sparkles, MessageSquare } from 'lucide-react';
 
 export default function ProductModal({ product, onClose }) {
   const { addToCart } = useCart();
@@ -33,7 +33,7 @@ export default function ProductModal({ product, onClose }) {
       
       {/* Container do Modal */}
       <div
-        className="relative bg-brand-surface w-full max-w-3xl rounded-3xl border border-brand-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="relative bg-brand-surface w-full max-w-3xl rounded-[8px] border border-brand-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Botão Fechar */}
@@ -53,12 +53,8 @@ export default function ProductModal({ product, onClose }) {
             {/* Coluna da Imagem e Miniaturas */}
             <div className="md:col-span-7 space-y-3">
               <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden bg-brand-muted border border-brand-border shadow-xs">
-                <span
-                  className={`absolute top-3 left-3 z-10 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow-md ${
-                    isDoremi ? 'bg-brand-primary text-white' : 'bg-brand-highlight text-white'
-                  }`}
-                >
-                  {isDoremi ? 'Seção DOReMI' : 'Seção SOLFÁ'}
+                <span className="absolute top-3 left-3 z-10 text-[10px] font-medium uppercase tracking-[0.2em] px-2.5 py-1 rounded-[4px] shadow-sm backdrop-blur-md bg-brand-dark/90 text-white">
+                  {isDoremi ? 'DOReMI' : 'SOLFÁ'}
                 </span>
                 
                 <img
@@ -105,25 +101,38 @@ export default function ProductModal({ product, onClose }) {
               </div>
 
               <div>
-                <div className="text-3xl font-bold text-brand-highlight">
+                <span className="text-[10px] tracking-[0.2em] uppercase text-brand-textMuted block font-medium">
+                  Valor sob Encomenda
+                </span>
+                <div className="text-3xl font-serif font-medium text-brand-dark">
                   {formatCurrency(product.preco)}
-                </div>
-                
-                <div className="text-xs text-brand-textMuted mt-0.5">
-                  em até 6x de {formatCurrency(product.preco / 6)} sem juros no cartão
                 </div>
               </div>
 
-              <button
-                onClick={() => {
-                  addToCart(product);
-                  onClose();
-                }}
-                className="w-full bg-brand-primary hover:bg-brand-primary-hover text-white py-3.5 px-5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 shadow-sm transition-all duration-200"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                Adicionar à Encomenda
-              </button>
+              <div className="space-y-2.5 pt-2">
+                <a
+                  href={`https://wa.me/5521912244881?text=Ol%C3%A1!%20Gostaria%20de%20consultoria%20com%20o%20Concierge%20para%20a%20pe%C3%A7a%20${encodeURIComponent(
+                    product.nome
+                  )}%20(${encodeURIComponent(formatCurrency(product.preco))}).`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-brand-dark hover:bg-brand-dark/90 text-white py-3.5 px-5 rounded-full font-medium text-xs tracking-wider uppercase flex items-center justify-center gap-2 shadow-sm transition-all duration-200"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Falar com Concierge VIP</span>
+                </a>
+
+                <button
+                  onClick={() => {
+                    addToCart(product);
+                    onClose();
+                  }}
+                  className="w-full bg-transparent hover:bg-brand-muted/70 text-brand-dark border border-brand-border py-3 px-5 rounded-full font-medium text-xs tracking-wider uppercase flex items-center justify-center gap-2 transition-all duration-200"
+                >
+                  <ShoppingBag className="w-4 h-4 text-brand-textMuted" />
+                  <span>Salvar em Minha Seleção</span>
+                </button>
+              </div>
 
               <div className="pt-2 border-t border-brand-border text-xs text-brand-textMuted space-y-1">
                 <div className="flex items-center gap-1.5 text-brand-primary font-medium">
