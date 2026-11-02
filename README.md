@@ -41,11 +41,14 @@ Este repositório documenta a evolução completa de uma aplicação web, demons
   - Configuração dos tokens tipográficos no Tailwind e Google Fonts (*Marcellus* para títulos e *Plus Jakarta Sans* para interface).
   - Modelagem do catálogo original (8 produtos da UFF: 4 camas e 4 sofás) em [`src/data/products.js`](src/data/products.js) com especificações e funções utilitárias.
 
-- [ ] **Milestone 2: Reconstrução Funcional com React (v1.0)**
-  - Criação de Navbar responsiva com logo e menu mobile.
-  - Catálogo de Camas e Sofás em cards modernos com modal de detalhes.
-  - Carrinho de compras interativo (substituição do textarea legado) com cálculo em tempo real.
-  - Formulário de cadastro com validação de senhas em linha.
+- [x] **Milestone 2: Reconstrução Funcional com React (v1.0)**
+  - Criação da `Navbar` responsiva com a nova logo horizontal e menu mobile integrado.
+  - Seções **DOReMI (Camas)** e **SOLFÁ (Sofás)** recriadas em cards modernos (`ProductCard`) com fotos e medidas.
+  - Substituição dos pop-ups legados (`window.open`) por modal moderno e acessível (`ProductModal`).
+  - Substituição do `<textarea>` acumulativo por um **Carrinho de Compras Reativo** (`CartDrawer` e `CartContext`) com cálculo em tempo real.
+  - Formulário completo de **Encomendas & Pagamento com Cartão** (`OrderForm`), mantendo todos os campos do trabalho acadêmico.
+  - Modal de **Cadastro de Clientes** (`RegisterModal`) com validação de senhas em tempo real e sem `alert()` invasivos.
+  - Sistema de notificações visuais não-intrusivas (`Toast`).
 
 - [ ] **Milestone 3: Expansão para E-commerce Profissional (v2.0)**
   - Integração com a API do **ViaCEP** para preenchimento de endereço e cálculo de frete.
