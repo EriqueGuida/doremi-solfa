@@ -1,104 +1,83 @@
-# DOReMI SOLFÁ Móveis
+# DOReMI SOLFÁ Móveis — E-Commerce
 
-> **Versão 0.0 (Legado)** — Projeto acadêmico desenvolvido para a disciplina de **Construção de Página Web** do curso de **Tecnologia em Sistemas de Computação** da **Universidade Federal Fluminense (UFF)**.
-
----
-
-## Sobre o Projeto
-
-O **DOReMI SOLFÁ Móveis** é uma aplicação web fictícia para uma loja de móveis especializada em camas (Seção *DOReMI*) e sofás (Seção *SOLFÁ*). O projeto foi desenvolvido como parte das avaliações práticas (AD1 e AD2) da disciplina de Construção de Página Web, cobrindo os fundamentos essenciais da web: **HTML5 semântico, CSS3 e JavaScript puro (Vanilla JS)**.
-
-Esta versão **0.0** representa o código original concluído para a entrega acadêmica e é preservada como o marco inicial de um processo de **modernização contínua**.
+> **Da base acadêmica ao padrão de mercado**: Projeto de e-commerce de móveis desenvolvido originalmente como avaliação prática na **Universidade Federal Fluminense (UFF / CEDERJ)** e modernizado com **React, Vite e Tailwind CSS** aplicando os conceitos do **SENAI (Técnico em Desenvolvimento de Sistemas)**.
 
 ---
 
-## Contexto e Objetivo no Portfólio
+## Contexto & Propósito
 
-- **Origem Acadêmica:** Graduação em Tecnologia em Sistemas de Computação — UFF.
-- **Próximo Passo:** Modernização do Front-End utilizando **React**, aplicando os conceitos abordados no Curso Técnico em Desenvolvimento de Sistemas do **SENAI**.
+Este repositório documenta a evolução completa de uma aplicação web, demonstrando a capacidade de:
+1. **Trabalhar com código legado**: analisar e isolar a versão original em Vanilla JS mantendo integridade histórica.
+2. **Modernizar para ecossistemas modernos**: refatorar a interface para **React** com componentização, arquitetura limpa e alta responsividade.
+3. **Seguir boas práticas de Engenharia de Software**: versionamento semântico com commits padronizados, separação de responsabilidades e documentação técnica para processos seletivos de **estágio em desenvolvimento de software**.
 
----
-
-## Funcionalidades da Versão 0.0 (Legado)
-
-- **Apresentação Institucional:** Página inicial estruturada com cabeçalho, navegação, dados de contato e identidade visual da marca.
-- **Catálogo de Camas (Seção DOReMI):** Listagem de modelos de solteiro e casal com abertura dinâmica de detalhes e imagens em janela pop-up/modal via JavaScript.
-- **Catálogo de Sofás (Seção SOLFÁ):** Tabela interativa com visualização detalhada sob demanda (dimensões, tecidos, tipos e preços) ao clicar em cada opção.
-- **Módulo de Encomendas:** Montagem de lista de compras dinâmica através de `<select>`, adicionando itens e calculando o total acumulado em tempo real via JavaScript.
-- **Módulo de Cadastro:** Formulário com múltiplos campos de dados pessoais/endereço e validação de consistência de senhas em JavaScript.
+**O código e documentação originais da disciplina estão 100% preservados na pasta [`/legacy`](legacy/README.md).**
 
 ---
 
-## Tecnologias Utilizadas (v0.0)
+## Comparativo: Código Legado vs. Aplicação Moderna
 
-- **HTML5:** Estruturação semântica das páginas (`<header>`, `<nav>`, `<section>`, `<fieldset>`, `<address>`, etc.).
-- **CSS3:** Estilização com layout baseado em caixas, formulários estilizados, tipografia personalizada e tabelas de dados.
-- **JavaScript (Vanilla):**
-  - Manipulação de DOM e escuta de eventos (`DOMContentLoaded`, `click`, `change`, `reset`).
-  - Lógica de cálculo acumulativo de compras.
-  - Validação de formulários e crítica de campos de senha.
-  - Controle de pop-ups e exibição dinâmica de produtos.
+| Aspecto | Versão 0.0 (Legado UFF) | Versão Moderna (React) |
+| :--- | :--- | :--- |
+| **Arquitetura** | Arquivos HTML estáticos e scripts soltos | Single Page Application (SPA) componentizada |
+| **Tecnologias** | HTML5, CSS3 e JavaScript Vanilla | React 18, Vite, Tailwind CSS, Lucide Icons |
+| **Catálogo** | Tabelas rígidas e janelas pop-up (`window.open`) | Cards interativos, filtros rápidos e Modais acessíveis |
+| **Orçamento / Pedidos** | Adição em linha para `<textarea>` | Carrinho de compras interativo com Drawer lateral |
+| **Formulários** | `alert()` nativo do navegador para erros | Validações em tempo real e feedback visual limpo |
+| **Responsividade** | Focado em desktop clássico | Mobile-First (celulares, tablets e desktops) |
 
 ---
 
-## Estrutura de Arquivos
+## Roadmap de Milestones
 
-```text
-Solfa/
-├── docs/                             # Documentação acadêmica e imagens
-│   ├── AD1_WEB_2026_2.pdf            # Enunciado da Avaliação a Distância 1
-│   ├── AD2_WEB_2026-2.pdf            # Enunciado da Avaliação a Distância 2
-│   └── screenshots/                  # Registros visuais da versão legada v0.0
-│       ├── secao-doremi-camas.png
-│       ├── secao-solfa-sofas.png
-│       └── modulo-encomendas.png
-├── imagens/                          # Ativos visuais originais (logos e produtos)
-│   ├── DoremisofaLogo.png
-│   ├── DoremisofaLogoTopo.png
-│   └── ... (fotos de camas e sofás)
-├── Cadastro.html                     # Formulário de cadastro de clientes
-├── camas.html                        # Estrutura base da seção de camas
-├── Doremi.html                       # Página do catálogo de camas
-├── DoremisolfaMoveis.html            # Versão inicial da apresentação
-├── DoremisolfaMoveisHTML5.html       # Apresentação institucional com HTML5 semântico
-├── Encomendas.html                   # Página de orçamentos e pedidos com cálculo em JS
-├── Solfa.html                        # Página do catálogo interativo de sofás
-├── script.js                         # Regras de negócio, cálculos e validações em JS
-├── style.css                         # Folha de estilos global
-└── README.md                         # Contextualização do projeto e histórico
+- [x] **Milestone 0: Preparação da Estrutura & Isolamento do Legado**
+  - Isolamento de todo o código da disciplina para a pasta `/legacy` (código acessível e funcional).
+  - Configuração do novo ecossistema moderno com **Vite**, **React**, **Tailwind CSS** e **Lucide React**.
+  - Criação da nova documentação de acompanhamento e configuração do `.gitignore`.
+
+- [ ] **Milestone 1: Identidade Visual, Design System & Modelagem de Dados**
+  - Definição da paleta de cores contemporânea (Terracota, Verde Oliva e Linho).
+  - Estruturação dos tokens de tipografia (*Plus Jakarta Sans* e *Playfair Display*).
+  - Modelagem do catálogo original (Camas DOReMI e Sofás SOLFÁ) em arquivo JSON estruturado.
+
+- [ ] **Milestone 2: Reconstrução Funcional com React (v1.0)**
+  - Criação de Navbar responsiva com logo e menu mobile.
+  - Catálogo de Camas e Sofás em cards modernos com modal de detalhes.
+  - Carrinho de compras interativo (substituição do textarea legado) com cálculo em tempo real.
+  - Formulário de cadastro com validação de senhas em linha.
+
+- [ ] **Milestone 3: Expansão para E-commerce Profissional (v2.0)**
+  - Integração com a API do **ViaCEP** para preenchimento de endereço e cálculo de frete.
+  - Persistência dos itens do carrinho no `localStorage`.
+  - Sistema de busca em tempo real com debounce e filtros de categoria.
+  - Notificações visuais elegantes (*toasts*) e deploy automatizado na nuvem.
+
+---
+
+## Tecnologias Utilizadas
+
+- **Core:** [React 18](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+- **Ícones:** [Lucide React](https://lucide.dev/)
+- **Tipografia:** Google Fonts (*Plus Jakarta Sans*, *Playfair Display*)
+
+---
+
+## Como Executar o Projeto Moderno
+
+### Pré-requisitos
+- [Node.js](https://nodejs.org/) (versão 18 ou superior)
+- Gerenciador de pacotes `npm`
+
+### Passos de Instalação e Execução
+
+```bash
+# 1. Instalar as dependências do projeto
+npm install
+
+# 2. Iniciar o servidor de desenvolvimento local
+npm run dev
+
+# 3. Compilar a versão para produção
+npm run build
 ```
-
----
-
-## Como Executar a Versão Legada
-
-Como esta versão utiliza apenas tecnologias nativas do navegador, nenhuma instalação de dependências é necessária:
-
-1. Clone ou baixe este repositório.
-2. Abra qualquer um dos arquivos `.html` diretamente no seu navegador preferido (recomendado: `DoremisolfaMoveisHTML5.html`), ou:
-3. Utilize a extensão **Live Server** no VS Code para uma melhor experiência de navegação local.
-
----
-
-## Demonstração Visual (Screenshots da v0.0)
-
-Abaixo estão os registros visuais da interface original desenvolvida na faculdade utilizando apenas HTML5 e CSS3 puros:
-
-### 1. Seção DOReMI (Catálogo de Camas)
-Estrutura da página com navegação lateral, cabeçalho institucional e listagem de modelos de solteiro e casal. Ao clicar em cada modelo, uma janela/modal é disparada via JavaScript exibindo foto e especificações técnicas.
-
-![Seção DOReMI - Camas](docs/screenshots/secao-doremi-camas.png)
-
----
-
-### 2. Seção SOLFÁ (Catálogo Interativo de Sofás)
-Tabela interativa construída com HTML5 e estilizada em CSS. Cada linha permite alternar a visualização central dinâmica com imagem, tecido, dimensões e valor em tempo real através de manipuladores de eventos em JavaScript puro.
-
-![Seção SOLFÁ - Sofás](docs/screenshots/secao-solfa-sofas.png)
-
----
-
-### 3. Módulo de Encomendas (Carrinho & Pagamento)
-Formulário de identificação, seleção de produtos via combobox com cálculo automático acumulado do orçamento em um campo de texto, e seção para inserção dos dados de pagamento e parcelamento.
-
-![Módulo de Encomendas](docs/screenshots/modulo-encomendas.png)
