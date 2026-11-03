@@ -5,10 +5,11 @@
 | **Projeto** | DOReMI SOLFÁ — Atelier de Mobiliário Autoral & E-Commerce |
 | **Versão do Documento** | 3.0.0 (Final / Release Oficial) |
 | **Status do Projeto** | **Concluído** |
+| **Deploy em Produção** | [https://doremi-solfa.vercel.app/](https://doremi-solfa.vercel.app/) |
 | **Autor** | Erique Guida |
 | **Origem Acadêmica** | Universidade Federal Fluminense (UFF) / Fundação CECIERJ |
 | **Aprimoramento Técnico** | SENAI — Técnico em Desenvolvimento de Sistemas |
-| **Stack Principal** | React 18, Vite 6, Tailwind CSS 3, Lucide React, ViaCEP API |
+| **Stack Principal** | React 18, Vite 6, Tailwind CSS 3, Lucide React, ViaCEP API, Vercel |
 | **Engenharia Assistida** | Google Antigravity (Pair Programmer & Tech Lead Virtual) |
 
 ---

@@ -1,13 +1,12 @@
 # DOReMI SOLFÁ — Atelier de Mobiliário Autoral & E-Commerce
 
 [![Status](https://img.shields.io/badge/Status-Projeto%20Conclu%C3%ADdo-brightgreen.svg)](#-status-e-conclusão-do-projeto)
-[![Documentação](https://img.shields.io/badge/Documenta%C3%A7%C3%A3o-specification.md-blue.svg)](specification.md)
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?logo=react&logoColor=white)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-6.0.1-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.15-38B2AC?logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
-[![Licença](https://img.shields.io/badge/licença-MIT-green.svg)](LICENSE)
-[![Versão](https://img.shields.io/badge/Release-v3.0--editorial-1F563E.svg)](#roadmap-de-milestones--tags-git)
 [![Origem Acadêmica](https://img.shields.io/badge/Origem-UFF%20%2F%20CEDERJ-005BA2.svg)](legacy/README.md)
+
+> **Deploy Oficial em Produção:** Acesse a experiência completa em [**https://doremi-solfa.vercel.app/**](https://doremi-solfa.vercel.app/)
 
 > **Da base acadêmica ao padrão de mercado**: Aplicação web desenvolvida originalmente como avaliação prática (AD1 e AD2) na disciplina de **Construção de Páginas Web** da **Universidade Federal Fluminense (UFF / CEDERJ)** e progressivamente refatorada para **React, Vite e Tailwind CSS**, incorporando os padrões de Engenharia de Software do **SENAI (Técnico em Desenvolvimento de Sistemas)** e culminando em um posicionamento de **alta curadoria e posicionamento editorial de luxo (*Quiet Luxury*)**.
 
@@ -17,6 +16,8 @@
 
 > [!NOTE]
 > **PROJETO CONCLUÍDO & ENTREGUE**: O escopo planejado para este projeto foi **100% finalizado**. O objetivo central deste repositório foi comprovar conhecimentos sólidos e práticos em desenvolvimento Front-End moderno (componentização, consumo de APIs REST assíncronas, reatividade, persistência local e UI/UX responsiva), servindo como evidência tangível de domínio técnico interdisciplinar no portfólio.
+>
+> **Deploy em Produção na Vercel:** [https://doremi-solfa.vercel.app/](https://doremi-solfa.vercel.app/)
 >
 > Para a documentação técnica detalhada, diagramas de arquitetura e casos de uso, consulte a [**Especificação Técnica Completa (specification.md)**](specification.md).
 
@@ -163,10 +164,14 @@ Solfa/
 * **Iconografia:** [Lucide React](https://lucide.dev/).
 * **Tipografia:** Google Fonts ([*Cormorant Garamond*](https://fonts.google.com/specimen/Cormorant+Garamond) e [*Plus Jakarta Sans*](https://fonts.google.com/specimen/Plus+Jakarta+Sans)).
 * **APIs Externas:** [ViaCEP WebService](https://viacep.com.br/) para preenchimento automático de endereços.
+* **Hospedagem & CI/CD:** [Vercel](https://vercel.com/) com deploy contínuo em produção ([doremi-solfa.vercel.app](https://doremi-solfa.vercel.app/)).
 
 ---
 
 ## Como Executar o Projeto Localmente
+
+> [!TIP]
+> **Acesso Direto Online:** Se preferir experimentar a aplicação em tempo real sem configurar o ambiente local, acesse a versão em produção: [**https://doremi-solfa.vercel.app/**](https://doremi-solfa.vercel.app/)
 
 ### Pré-requisitos
 * [Node.js](https://nodejs.org/) versão 18.0 ou superior instalada.

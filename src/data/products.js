@@ -245,7 +245,7 @@ export const MATERIALS_DATA = [
     id: 'veludo',
     name: 'Veludo Nobre Italiano',
     category: 'Acabamento Acetinado',
-    image: '/imagens/materia-prima-2.jpg',
+    image: '/imagens/materia-prima-3.jpg',
     description: 'Estrutura aveludada de alta densidade que reflete a luz com elegância discreta. É a assinatura de nobreza do nosso Sofá Retrô.',
     tactile: 'Toque extremamente aveludado, suave e imersivo.',
   },
